@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dyppfllnvsj2u"]
+
+[ext_resource type="Script" uid="uid://cknn1ifiwxcbm" path="res://PrkjtResonanz/scripts/player/Lyra.cs" id="1_tp8mg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8mub"]
+radius = 16.005
+height = 64.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tp8mg"]
+size = Vector2(32, 64)
+
+[node name="Lyra" type="CharacterBody2D" unique_id=1363985345]
+script = ExtResource("1_tp8mg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=344329877]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_w8mub")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=1472756540]
+texture = SubResource("PlaceholderTexture2D_tp8mg")
