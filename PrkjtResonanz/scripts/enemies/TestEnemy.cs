@@ -1,0 +1,37 @@
+using Godot;
+using System;
+
+public partial class TestEnemy : CharacterBody2D
+{
+	[Export]
+	public int health = 100;
+	private int _damagedHealth;
+	
+	public void TakeDamage(int damage){
+		if (_damagedHealth > 0) {
+			_damagedHealth -= damage;
+			GD.Print(_damagedHealth);
+			if (_damagedHealth <= 0) {
+				GD.Print("Enemy fainted");
+			}
+		}
+	}
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		_damagedHealth = health;
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		Vector2 velocity = Velocity;
+		if (!IsOnFloor())
+		{
+			// Add the gravity.
+			velocity += GetGravity() * (float)delta;
+		}
+		Velocity = velocity;
+		MoveAndSlide();
+	}
+}

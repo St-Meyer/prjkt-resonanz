@@ -10,6 +10,8 @@ public partial class Lyra : CharacterBody2D
 	public float CoyoteTime = 0.1f;
 	[Export]
 	public float AttackTime = 0.3f;
+	[Export]
+	public int Strength = 20;
 	private float _coyoteTimer = 0f;
 	private bool _onAttack = false;
 	private float _attackTimer = 0f;
@@ -18,6 +20,12 @@ public partial class Lyra : CharacterBody2D
 	public override void _Ready(){
 		_attackHitbox = GetNode<Area2D>("AttackHitBox");
 		_attackHitbox.Monitoring = false;
+		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
+	}
+	public void OnAttackHitboxBodyEntered(Node2D body) {
+		if (body is TestEnemy enemy) {
+			enemy.TakeDamage(Strength);
+		}
 	}
 	public override void _PhysicsProcess(double delta)
 	{

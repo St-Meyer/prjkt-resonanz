@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cfcmq740742wp"]
+
+[ext_resource type="Script" uid="uid://dh0ffuaa3sk0r" path="res://PrkjtResonanz/scripts/enemies/TestEnemy.cs" id="1_jou66"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07wie"]
+radius = 16.0
+height = 64.0
+
+[node name="TestEnemy" type="CharacterBody2D" unique_id=1099546113]
+script = ExtResource("1_jou66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1355330231]
+shape = SubResource("CapsuleShape2D_07wie")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2043800278]
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 16.0
+offset_bottom = 32.0
+color = Color(0, 0, 0, 1)
