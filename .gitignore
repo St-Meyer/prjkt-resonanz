@@ -3,3 +3,6 @@
 .godot/
 .mono/
 /android/
+
+# Quelldateien (lokal, nicht im Repo)
+assets/source/
