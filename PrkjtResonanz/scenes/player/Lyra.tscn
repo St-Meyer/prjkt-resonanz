@@ -17,4 +17,5 @@ position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_w8mub")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=1472756540]
+position = Vector2(0, -1)
 texture = SubResource("PlaceholderTexture2D_tp8mg")
