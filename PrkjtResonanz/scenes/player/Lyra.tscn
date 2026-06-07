@@ -9,6 +9,9 @@ height = 64.0
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tp8mg"]
 size = Vector2(32, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tp8mg"]
+size = Vector2(40, 30)
+
 [node name="Lyra" type="CharacterBody2D" unique_id=1363985345]
 script = ExtResource("1_tp8mg")
 
@@ -19,3 +22,10 @@ shape = SubResource("CapsuleShape2D_w8mub")
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=1472756540]
 position = Vector2(0, -1)
 texture = SubResource("PlaceholderTexture2D_tp8mg")
+
+[node name="AttackHitBox" type="Area2D" parent="." unique_id=1115798563]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox" unique_id=508117594]
+position = Vector2(38, 1)
+shape = SubResource("RectangleShape2D_tp8mg")

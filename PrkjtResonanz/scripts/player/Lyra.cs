@@ -8,8 +8,17 @@ public partial class Lyra : CharacterBody2D
 	public float JumpVelocity = -400.0f;
 	[Export]
 	public float CoyoteTime = 0.1f;
+	[Export]
+	public float AttackTime = 0.3f;
 	private float _coyoteTimer = 0f;
-
+	private bool _onAttack = false;
+	private float _attackTimer = 0f;
+	private Area2D _attackHitbox;
+	
+	public override void _Ready(){
+		_attackHitbox = GetNode<Area2D>("AttackHitBox");
+		_attackHitbox.Monitoring = false;
+	}
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -24,6 +33,20 @@ public partial class Lyra : CharacterBody2D
 			}
 			// Add the gravity.
 			velocity += GetGravity() * (float)delta;
+		}
+		if (Input.IsActionJustPressed("attack") && !_onAttack) {
+			_onAttack = true;
+			_attackHitbox.Monitoring = true;
+			GD.Print("Attack Start");
+			_attackTimer = AttackTime;
+		}
+		if (_attackTimer > 0) {
+			_attackTimer -= (float)delta;
+			if (_attackTimer <= 0) {
+				_onAttack = false;
+				_attackHitbox.Monitoring = false;
+				GD.Print("Attack End");
+			}
 		}
 		// Handle Jump.
 		if (Input.IsActionJustPressed("jump") && (IsOnFloor() || _coyoteTimer > 0))
