@@ -12,7 +12,7 @@ public partial class TestEnemy : CharacterBody2D
 			_damagedHealth -= damage;
 			GD.Print(_damagedHealth);
 			if (_damagedHealth <= 0) {
-				GD.Print("Enemy fainted");
+				QueueFree();
 			}
 		}
 	}
@@ -23,7 +23,7 @@ public partial class TestEnemy : CharacterBody2D
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 		if (!IsOnFloor())

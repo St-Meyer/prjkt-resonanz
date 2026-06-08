@@ -59,6 +59,7 @@ public partial class Lyra : CharacterBody2D
 		// Handle Jump.
 		if (Input.IsActionJustPressed("jump") && (IsOnFloor() || _coyoteTimer > 0))
 		{
+			_coyoteTimer = 0;
 			velocity.Y = JumpVelocity;
 		}
 
