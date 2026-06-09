@@ -30,4 +30,8 @@ monitorable = false
 position = Vector2(38, 1)
 shape = SubResource("RectangleShape2D_tp8mg")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=205946456]
+zoom = Vector2(1.51, 1.51)
+limit_smoothed = true
+
 [connection signal="body_entered" from="AttackHitBox" to="." method="_on_attack_hit_box_body_entered"]
