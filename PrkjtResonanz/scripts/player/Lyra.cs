@@ -69,14 +69,23 @@ public partial class Lyra : CharacterBody2D
 
 		// Get the input direction and handle the movement/deceleration.
 		float direction = Input.GetAxis("move_left", "move_right");
+		
 		if (direction != 0)
 		{
 			velocity.X = direction * Speed;
+			// Looking right
 			if (direction < 0) {
 				_sprite.FlipH = true;
+				_attackHitbox.Position = new Vector2(-Mathf.Abs(
+					_attackHitbox.Position.X), _attackHitbox.Position.Y);
+				GD.Print(_attackHitbox.Position);
 			}
+			// Looking left
 			else {
 				_sprite.FlipH = false;
+				_attackHitbox.Position = new Vector2(Mathf.Abs(
+					_attackHitbox.Position.X), _attackHitbox.Position.Y);
+				GD.Print(_attackHitbox.Position);
 			} 
 			
 		}

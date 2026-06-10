@@ -24,13 +24,15 @@ position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_w8mub")
 
 [node name="AttackHitBox" type="Area2D" parent="." unique_id=1115798563]
+position = Vector2(37, -2)
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox" unique_id=508117594]
-position = Vector2(38, 1)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_tp8mg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=205946456]
+position = Vector2(1, -2)
 zoom = Vector2(1.51, 1.51)
 limit_smoothed = true
 
