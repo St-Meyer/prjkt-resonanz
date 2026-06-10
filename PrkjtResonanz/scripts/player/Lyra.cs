@@ -78,14 +78,12 @@ public partial class Lyra : CharacterBody2D
 				_sprite.FlipH = true;
 				_attackHitbox.Position = new Vector2(-Mathf.Abs(
 					_attackHitbox.Position.X), _attackHitbox.Position.Y);
-				GD.Print(_attackHitbox.Position);
 			}
 			// Looking left
 			else {
 				_sprite.FlipH = false;
 				_attackHitbox.Position = new Vector2(Mathf.Abs(
 					_attackHitbox.Position.X), _attackHitbox.Position.Y);
-				GD.Print(_attackHitbox.Position);
 			} 
 			
 		}

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://byfwykqfuolwy"]
 
 [ext_resource type="PackedScene" uid="uid://dyppfllnvsj2u" path="res://PrkjtResonanz/scenes/player/Lyra.tscn" id="1_7qb4f"]
-[ext_resource type="Texture2D" uid="uid://78cmcj8ql0w5" path="res://PrkjtResonanz/assets/backgrounds/warum-ist-der-himmel-blau_jpg.png" id="2_lilhn"]
+[ext_resource type="Texture2D" uid="uid://decpfikksy7ly" path="res://PrkjtResonanz/assets/backgrounds/0a6d99e8-563b-43d9-bcef-14218440616f_scaled.jpg" id="1_qgrfh"]
 [ext_resource type="PackedScene" uid="uid://cfcmq740742wp" path="res://PrkjtResonanz/scenes/enemies/test_enemy.tscn" id="3_qgrfh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lilhn"]
@@ -9,29 +9,28 @@ size = Vector2(881, 36.5)
 
 [node name="TestLevel" type="Node2D" unique_id=490565684]
 
+[node name="0a6d99e8563b43d9Bcef14218440616fScaled" type="Sprite2D" parent="." unique_id=1122419933]
+position = Vector2(534.00006, 1183.0001)
+scale = Vector2(3.217188, 3.5975695)
+texture = ExtResource("1_qgrfh")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=883155554]
 position = Vector2(-9, 11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=713882444]
-position = Vector2(613, 403)
+position = Vector2(854, 854)
 shape = SubResource("RectangleShape2D_lilhn")
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=2004002854]
-offset_left = 172.0
-offset_top = 383.0
-offset_right = 1055.0
-offset_bottom = 423.0
+offset_left = 405.0
+offset_top = 832.0
+offset_right = 1288.0
+offset_bottom = 872.0
 color = Color(0.30040607, 0.3607439, 0, 1)
 
 [node name="Lyra" parent="." unique_id=1363985345 instance=ExtResource("1_7qb4f")]
-position = Vector2(222, 350)
+position = Vector2(520, 804)
 CoyoteTime = 0.5
 
-[node name="WarumIstDerHimmelBlauJpg" type="Sprite2D" parent="." unique_id=264376296]
-z_index = -4096
-position = Vector2(575.00006, 294.00006)
-scale = Vector2(0.7161458, 0.61944443)
-texture = ExtResource("2_lilhn")
-
 [node name="TestEnemy" parent="." unique_id=1099546113 instance=ExtResource("3_qgrfh")]
-position = Vector2(514, 350)
+position = Vector2(1076, 808)

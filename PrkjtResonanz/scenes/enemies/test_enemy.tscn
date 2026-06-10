@@ -1,11 +1,54 @@
 [gd_scene format=3 uid="uid://cfcmq740742wp"]
 
 [ext_resource type="Script" uid="uid://dh0ffuaa3sk0r" path="res://PrkjtResonanz/scripts/enemies/TestEnemy.cs" id="1_jou66"]
-[ext_resource type="Texture2D" uid="uid://xlsqw38x543w" path="res://PrkjtResonanz/assets/sprites/enemies/pixel-art-enemy-sprite-for-a-dark-fantasy-64x64-pixel-art-9a62.png" id="2_07wie"]
+[ext_resource type="Texture2D" uid="uid://m5krcfu1agjx" path="res://PrkjtResonanz/assets/sprites/enemies/New Piskel(2).png" id="2_07wie"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07wie"]
 radius = 21.0
 height = 70.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvxce"]
+atlas = ExtResource("2_07wie")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6dt1"]
+atlas = ExtResource("2_07wie")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgnb7"]
+atlas = ExtResource("2_07wie")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7r3s"]
+atlas = ExtResource("2_07wie")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47p1n"]
+atlas = ExtResource("2_07wie")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h65bn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvxce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6dt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgnb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7r3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47p1n")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}]
 
 [node name="TestEnemy" type="CharacterBody2D" unique_id=1099546113]
 script = ExtResource("1_jou66")
@@ -14,7 +57,10 @@ script = ExtResource("1_jou66")
 position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_07wie")
 
-[node name="PixelArtEnemySpriteForADarkFantasy64x64PixelArt9a62" type="Sprite2D" parent="." unique_id=837427506]
-position = Vector2(3, -2)
-scale = Vector2(0.053865135, 0.06455592)
-texture = ExtResource("2_07wie")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=745934780]
+position = Vector2(-2.9999998, -1)
+scale = Vector2(0.5585937, 0.57421875)
+sprite_frames = SubResource("SpriteFrames_h65bn")
+animation = &"death"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

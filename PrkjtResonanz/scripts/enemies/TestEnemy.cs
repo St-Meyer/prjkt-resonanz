@@ -6,13 +6,18 @@ public partial class TestEnemy : CharacterBody2D
 	[Export]
 	public int health = 100;
 	private int _damagedHealth;
+	private AnimatedSprite2D _animatedSprite2D;
+	
+	public void OnAnimationFinished(){
+		QueueFree();
+	}
 	
 	public void TakeDamage(int damage){
 		if (_damagedHealth > 0) {
 			_damagedHealth -= damage;
 			GD.Print(_damagedHealth);
 			if (_damagedHealth <= 0) {
-				QueueFree();
+				_animatedSprite2D.Play("death");
 			}
 		}
 	}
@@ -20,6 +25,8 @@ public partial class TestEnemy : CharacterBody2D
 	public override void _Ready()
 	{
 		_damagedHealth = health;
+		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
