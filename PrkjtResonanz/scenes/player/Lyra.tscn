@@ -13,15 +13,15 @@ size = Vector2(40, 30)
 [node name="Lyra" type="CharacterBody2D" unique_id=1363985345]
 script = ExtResource("1_tp8mg")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=344329877]
+position = Vector2(-3, -2)
+shape = SubResource("CapsuleShape2D_w8mub")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472756540]
 position = Vector2(-1, -4)
 rotation = 3.1415927
 scale = Vector2(0.068, -0.074)
 texture = ExtResource("2_eywtg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=344329877]
-position = Vector2(-3, -2)
-shape = SubResource("CapsuleShape2D_w8mub")
 
 [node name="AttackHitBox" type="Area2D" parent="." unique_id=1115798563]
 position = Vector2(37, 0)

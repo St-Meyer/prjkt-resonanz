@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://xlsqw38x543w" path="res://PrkjtResonanz/assets/sprites/enemies/pixel-art-enemy-sprite-for-a-dark-fantasy-64x64-pixel-art-9a62.png" id="2_07wie"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07wie"]
-radius = 16.0
-height = 64.0
+radius = 21.0
+height = 70.0
 
 [node name="TestEnemy" type="CharacterBody2D" unique_id=1099546113]
 script = ExtResource("1_jou66")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1355330231]
-position = Vector2(0, 1)
+position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_07wie")
 
 [node name="PixelArtEnemySpriteForADarkFantasy64x64PixelArt9a62" type="Sprite2D" parent="." unique_id=837427506]
