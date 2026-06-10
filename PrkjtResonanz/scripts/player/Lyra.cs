@@ -16,11 +16,13 @@ public partial class Lyra : CharacterBody2D
 	private bool _onAttack = false;
 	private float _attackTimer = 0f;
 	private Area2D _attackHitbox;
+	private Sprite2D _sprite;
 	
 	public override void _Ready(){
 		_attackHitbox = GetNode<Area2D>("AttackHitBox");
 		_attackHitbox.Monitoring = false;
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
+		_sprite = GetNode<Sprite2D>("Sprite2D");
 	}
 	public void OnAttackHitboxBodyEntered(Node2D body) {
 		if (body is TestEnemy enemy) {
@@ -30,6 +32,8 @@ public partial class Lyra : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
+	
+		
 		// Coyote Timer
 		if (IsOnFloor()){
 			_coyoteTimer = CoyoteTime;
@@ -68,11 +72,19 @@ public partial class Lyra : CharacterBody2D
 		if (direction != 0)
 		{
 			velocity.X = direction * Speed;
+			if (direction < 0) {
+				_sprite.FlipH = true;
+			}
+			else {
+				_sprite.FlipH = false;
+			} 
+			
 		}
 		else
 		{
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
+		
 		Velocity = velocity;
 		MoveAndSlide();
 	}
