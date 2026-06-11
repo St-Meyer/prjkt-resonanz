@@ -1,17 +1,23 @@
 using Godot;
 using System;
 
-public partial class Lyra : CharacterBody2D
-{	[Export]
+public partial class Player : CharacterBody2D{	
+	
+	// Movement Parameter
+	[Export]
 	public float Speed = 300.0f;
 	[Export]
 	public float JumpVelocity = -400.0f;
 	[Export]
-	public float CoyoteTime = 0.1f;
-	[Export]
 	public float AttackTime = 0.3f;
+
+	// Physics Parameter
 	[Export]
-	public int Strength = 20;
+	public float CoyoteTime = 0.1f;
+	
+	// Signals
+	[Signal] public delegate void HitReceivedEventHandler(int Damage);
+
 	private float _coyoteTimer = 0f;
 	private bool _onAttack = false;
 	private float _attackTimer = 0f;
@@ -23,12 +29,14 @@ public partial class Lyra : CharacterBody2D
 		_attackHitbox.Monitoring = false;
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
 		_sprite = GetNode<Sprite2D>("Sprite2D");
+		GetNode<GameManager>("/root/GameManager").ConnectPlayer(this);
 	}
 	public void OnAttackHitboxBodyEntered(Node2D body) {
 		if (body is TestEnemy enemy) {
-			enemy.TakeDamage(Strength);
+			enemy.TakeDamage(GetNode<PlayerData>("/root/PlayerData").BasicStrength);
 		}
 	}
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;

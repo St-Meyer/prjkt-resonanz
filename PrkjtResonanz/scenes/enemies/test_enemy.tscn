@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dh0ffuaa3sk0r" path="res://PrkjtResonanz/scripts/enemies/TestEnemy.cs" id="1_jou66"]
 [ext_resource type="Texture2D" uid="uid://m5krcfu1agjx" path="res://PrkjtResonanz/assets/sprites/enemies/New Piskel(2).png" id="2_07wie"]
+[ext_resource type="Texture2D" uid="uid://dv74mp6nicxlf" path="res://PrkjtResonanz/assets/sprites/enemies/New Piskel(3).png" id="3_dvxce"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07wie"]
 radius = 21.0
@@ -27,6 +28,22 @@ region = Rect2(384, 0, 128, 128)
 atlas = ExtResource("2_07wie")
 region = Rect2(512, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h65bn"]
+atlas = ExtResource("3_dvxce")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alwki"]
+atlas = ExtResource("3_dvxce")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv5op"]
+atlas = ExtResource("3_dvxce")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsf1d"]
+atlas = ExtResource("3_dvxce")
+region = Rect2(384, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h65bn"]
 animations = [{
 "frames": [{
@@ -48,6 +65,23 @@ animations = [{
 "loop": false,
 "name": &"death",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h65bn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alwki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lv5op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsf1d")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
 }]
 
 [node name="TestEnemy" type="CharacterBody2D" unique_id=1099546113]
@@ -61,6 +95,6 @@ shape = SubResource("CapsuleShape2D_07wie")
 position = Vector2(-2.9999998, -1)
 scale = Vector2(0.5585937, 0.57421875)
 sprite_frames = SubResource("SpriteFrames_h65bn")
-animation = &"death"
+animation = &"idle"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

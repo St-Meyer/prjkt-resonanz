@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dyppfllnvsj2u"]
 
-[ext_resource type="Script" uid="uid://cknn1ifiwxcbm" path="res://PrkjtResonanz/scripts/player/Lyra.cs" id="1_tp8mg"]
+[ext_resource type="Script" uid="uid://cknn1ifiwxcbm" path="res://PrkjtResonanz/scripts/player/Player.cs" id="1_tp8mg"]
 [ext_resource type="Texture2D" uid="uid://dx5xjnwf6n4nk" path="res://PrkjtResonanz/assets/sprites/lyra/ChatGPT Image 8. Juni 2026, 12_32_37(1).png" id="2_eywtg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8mub"]
