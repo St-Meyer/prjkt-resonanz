@@ -4,11 +4,16 @@ using System;
 public partial class PlayerData : Node
 {
 	[Export] public int MaxHealth = 100;
-	[Export] public int CurrentHealth;
 	[Export] public int BasicStrength = 20;
+	
 	[Signal] public delegate void HealthChangedEventHandler(int newHealth);
+	
+	public int CurrentHealth;
+	
+	public static PlayerData Instance {get; private set;}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
+		Instance = this;
 		CurrentHealth = MaxHealth;
 	}
 }

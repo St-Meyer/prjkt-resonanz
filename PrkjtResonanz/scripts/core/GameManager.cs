@@ -13,6 +13,8 @@ public partial class GameManager : Node
 	}
 	
 	public void OnHitReceived(int damage){
-		PlayerData.CurrentHealth -= damage;
+		PlayerData.Instance.CurrentHealth -= damage;
+		PlayerData.Instance.EmitSignal(PlayerData.SignalName.HealthChanged, 
+										PlayerData.Instance.CurrentHealth);
 	}
 }
