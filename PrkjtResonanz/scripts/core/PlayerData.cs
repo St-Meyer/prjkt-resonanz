@@ -10,10 +10,8 @@ public partial class PlayerData : Node
 	
 	public int CurrentHealth;
 	
-	public static PlayerData Instance {get; private set;}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
-		Instance = this;
 		CurrentHealth = MaxHealth;
 	}
 }

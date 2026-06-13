@@ -30,6 +30,7 @@ public partial class Player : CharacterBody2D{
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
 		_sprite = GetNode<Sprite2D>("Sprite2D");
 		GetNode<GameManager>("/root/GameManager").ConnectPlayer(this);
+		GetNode<GameManager>("/root/GameManager").OnHitReceived(20);
 	}
 	public void OnAttackHitboxBodyEntered(Node2D body) {
 		if (body is TestEnemy enemy) {
