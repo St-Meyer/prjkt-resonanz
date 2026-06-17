@@ -94,7 +94,13 @@ public partial class Player : CharacterBody2D{
 		
 		if (direction != 0)
 		{
-			velocity.X = direction * Speed;
+			if (Input.IsActionPressed("speedup") && (IsOnFloor())) {
+				velocity.X = direction * Speed * 1.5f;
+			}
+			else{
+				velocity.X = direction * Speed;
+			}
+			
 			// Looking right
 			if (direction < 0) {
 				_sprite.FlipH = true;

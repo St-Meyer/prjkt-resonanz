@@ -18,7 +18,14 @@ public partial class TestEnemy : CharacterBody2D
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
-	{
+	{	
+		_currentHealth = MaxHealth;
+	
+		// Animation Logic
+		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
+		_animatedSprite2D.Play("idle");
+		
 		// Referenz zu AttackHitBox
 		_attackHitbox = GetNode<Area2D>("AttackHitBox");
 		_attackHitbox.Monitoring = false;
@@ -26,10 +33,6 @@ public partial class TestEnemy : CharacterBody2D
 		// abonieren von AttackHitBox
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
 		
-		_currentHealth = MaxHealth;
-		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
-		_animatedSprite2D.Play("idle");
 	}
 
 	public void OnAttackHitboxBodyEntered(Node2D body) {
