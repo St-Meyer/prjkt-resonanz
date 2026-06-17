@@ -24,13 +24,25 @@ public partial class Player : CharacterBody2D{
 	private Area2D _attackHitbox;
 	private Sprite2D _sprite;
 	
+	public void ReceiveHit(int damage){
+		
+	}
+	
 	public override void _Ready(){
+		
+		// Referenz zu AttackHitBox
 		_attackHitbox = GetNode<Area2D>("AttackHitBox");
+		
 		_attackHitbox.Monitoring = false;
+		
+		// abonieren von AttackHitBox
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
+		
+		// Referenz zu Sprite2D
 		_sprite = GetNode<Sprite2D>("Sprite2D");
+		
+		
 		GetNode<GameManager>("/root/GameManager").ConnectPlayer(this);
-		GetNode<GameManager>("/root/GameManager").OnHitReceived(20);
 	}
 	public void OnAttackHitboxBodyEntered(Node2D body) {
 		if (body is TestEnemy enemy) {
@@ -42,7 +54,6 @@ public partial class Player : CharacterBody2D{
 	{
 		Vector2 velocity = Velocity;
 	
-		
 		// Coyote Timer
 		if (IsOnFloor()){
 			_coyoteTimer = CoyoteTime;
@@ -55,6 +66,8 @@ public partial class Player : CharacterBody2D{
 			// Add the gravity.
 			velocity += GetGravity() * (float)delta;
 		}
+		
+		// Attack Logic
 		if (Input.IsActionJustPressed("attack") && !_onAttack) {
 			_onAttack = true;
 			_attackHitbox.Monitoring = true;

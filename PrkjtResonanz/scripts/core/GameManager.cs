@@ -9,12 +9,15 @@ public partial class GameManager : Node
 	}
 	
 	public void ConnectPlayer(Player player) {
+		
+		// abonieten des OnHitReceived Signals. 
+		// Reagiert nur, wenn OnHitReceived ein Signal sendet.
 		player.HitReceived += OnHitReceived;
 	}
 	
-	public void OnHitReceived(int damage){
+	public void OnHitReceived(int Damage){
 		var playerData = GetNode<PlayerData>("/root/PlayerData");
-		playerData.CurrentHealth -= damage;
+		playerData.CurrentHealth -= Damage;
 		playerData.EmitSignal(PlayerData.SignalName.HealthChanged, 
 										playerData.CurrentHealth);
 	}
