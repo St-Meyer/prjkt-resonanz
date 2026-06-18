@@ -25,7 +25,7 @@ public partial class Player : CharacterBody2D{
 	private Sprite2D _sprite;
 	
 	public void ReceiveHit(int damage){
-		
+		EmitSignal(SignalName.HitReceived(damage));
 	}
 	
 	public override void _Ready(){
