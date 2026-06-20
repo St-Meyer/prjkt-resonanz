@@ -16,18 +16,14 @@ public partial class Player : CharacterBody2D{
 	public float CoyoteTime = 0.1f;
 	
 	// Signals
-	[Signal] public delegate void HitReceivedEventHandler(int Damage);
+	[Signal] public delegate void PlayerDamagedEventHandler(int Damage);
 
 	private float _coyoteTimer = 0f;
 	private bool _onAttack = false;
 	private float _attackTimer = 0f;
 	private Area2D _attackHitbox;
 	private Sprite2D _sprite;
-	
-	public void ReceiveHit(int damage){
-		EmitSignal(SignalName.HitReceived(damage));
-	}
-	
+
 	public override void _Ready(){
 		
 		// Referenz zu AttackHitBox
@@ -44,6 +40,11 @@ public partial class Player : CharacterBody2D{
 		
 		GetNode<GameManager>("/root/GameManager").ConnectPlayer(this);
 	}
+	
+	public void GetHit(int damage){
+		EmitSignal(SignalName.PlayerDamaged, damage);
+	}
+	
 	public void OnAttackHitboxBodyEntered(Node2D body) {
 		if (body is TestEnemy enemy) {
 			enemy.TakeDamage(GetNode<PlayerData>("/root/PlayerData").BasicStrength);

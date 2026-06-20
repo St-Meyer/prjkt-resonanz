@@ -17,27 +17,32 @@ public partial class TestEnemy : CharacterBody2D
 	
 
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{	
+	public override void _Ready(){
+		GD.Print("READY CALLED");
 		_currentHealth = MaxHealth;
+		GD.Print("HEALTH GESETZT");
 	
 		// Animation Logic
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		GD.Print("ANIMATED SPRITE GEFUNDEN");
 		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
 		_animatedSprite2D.Play("idle");
+		GD.Print("ANIMATION GESTARTET");
 		
 		// Referenz zu AttackHitBox
-		_attackHitbox = GetNode<Area2D>("AttackHitBox");
-		_attackHitbox.Monitoring = false;
+		_attackHitbox = GetNode<Area2D>("AttackHitbox");
+		GD.Print("TestEnemy geladen. HitboxMonitoring: " + _attackHitbox.Monitoring);
+		_attackHitbox.Monitoring = true;
 		
 		// abonieren von AttackHitBox
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
-		
+		GD.Print("ALLES BEREIT");
 	}
 
 	public void OnAttackHitboxBodyEntered(Node2D body) {
+		GD.Print("Hitbox getroffen von: " + body.Name);
 		if (body is Player player) {
-			player.ReceiveHit(Strength);
+			player.GetHit(Strength);
 		}
 	}
 	

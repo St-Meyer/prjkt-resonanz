@@ -17,10 +17,10 @@ public partial class HUD : Node
 		_lifeBar.Value = playerData.CurrentHealth;
 		
 		// Abonieren von HealthChanged
-		playerData.HealthChanged += OnHealthChanged;
+		playerData.HealthChanged += HandleHealthChange;
 	}
 
-	public void OnHealthChanged(int newHealth) {
+	public void HandleHealthChange(int newHealth) {
 		_lifeBar.Value = newHealth;
 	}
 }
