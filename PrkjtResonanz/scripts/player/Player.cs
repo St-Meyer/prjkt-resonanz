@@ -46,8 +46,7 @@ public partial class Player : CharacterBody2D{
 	}
 	
 	public void OnAttackHitboxBodyEntered(Node2D body) {
-		if (body is TestEnemy enemy) {
-			enemy.TakeDamage(GetNode<PlayerData>("/root/PlayerData").BasicStrength);
+		if (body is TestEnemy) {
 		}
 	}
 	

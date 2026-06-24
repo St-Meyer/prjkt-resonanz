@@ -1,4 +1,3 @@
-using System;
 using Godot;
 
 [GlobalClass]
@@ -8,8 +7,8 @@ public partial class AttackComponent : Node, IAttacker
 	[Export] public int Strength = 10;
 	[Export] public float AttackTime = 0.3f;
 
-	private float _attackTimer = 0f;
-	private bool _onAttack = false;
+	private float _attackTimer;
+	private bool _onAttack;
 
 	public void Attack(){
 		if (!_onAttack)

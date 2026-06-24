@@ -1,13 +1,12 @@
 using Godot;
-using System;
 
 public partial class TestEnemy : CharacterBody2D
 {
 
-	private bool _onAttack = false;
-
 	private Area2D _attackHitbox;
 	private AnimatedSprite2D _animatedSprite2D;
+
+	private AttackComponent _attackComponent = new AttackComponent();
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
@@ -22,11 +21,15 @@ public partial class TestEnemy : CharacterBody2D
 		
 		// abonieren von AttackHitBox
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
+        
+        // TODO: attackComponent abonieren?
 	}
 
 	public void OnAttackHitboxBodyEntered(Node2D body) {
-		if (body is Player player) {
-			player.GetHit(Strength);
+		if (body is Player) {
+            _attackHitbox.Monitoring = true;
+			_attackComponent.Attack();
+			_attackHitbox.Monitoring = false;
 		}
 	}
 	
