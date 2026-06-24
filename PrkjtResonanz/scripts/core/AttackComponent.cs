@@ -12,9 +12,10 @@ public partial class AttackComponent : Node, IAttacker
 	private bool _onAttack = false;
 
 	public void Attack(){
-		if (_attackTimer > 0)
+		if (!_onAttack)
 		{
 			_onAttack = true;
+			_attackTimer = AttackTime;
 			EmitSignal(SignalName.AttackExecuted, Strength);
 			if (_attackTimer <= 0)
 			{
