@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dh0ffuaa3sk0r" path="res://PrkjtResonanz/scripts/enemies/TestEnemy.cs" id="1_jou66"]
 [ext_resource type="Texture2D" uid="uid://m5krcfu1agjx" path="res://PrkjtResonanz/assets/sprites/enemies/New Piskel(2).png" id="2_07wie"]
 [ext_resource type="Texture2D" uid="uid://dv74mp6nicxlf" path="res://PrkjtResonanz/assets/sprites/enemies/New Piskel(3).png" id="3_dvxce"]
+[ext_resource type="Script" uid="uid://tkeqk0hl3nyl" path="res://PrkjtResonanz/scripts/core/AttackComponent.cs" id="4_rgnb7"]
+[ext_resource type="Script" uid="uid://clpt8oe462y2" path="res://PrkjtResonanz/scripts/core/HealthComponent.cs" id="5_e7r3s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07wie"]
 radius = 21.0
@@ -62,7 +64,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_47p1n")
 }],
-"loop": false,
+"loop": 0,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -79,7 +81,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bsf1d")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 6.0
 }]
@@ -106,3 +108,9 @@ position = Vector2(-39, -1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=1103785092]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_dvxce")
+
+[node name="AttackComponent" type="Node" parent="." unique_id=154871241]
+script = ExtResource("4_rgnb7")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1476121335]
+script = ExtResource("5_e7r3s")

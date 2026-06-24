@@ -1113,10 +1113,10 @@ script = ExtResource("1_g8wtx")
 follow_viewport = false
 
 [node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=1568079081]
-offset_left = -590.0
-offset_top = -480.0
-offset_right = 2600.0
-offset_bottom = 1614.0
+offset_left = -603.0
+offset_top = -283.0
+offset_right = 2587.0
+offset_bottom = 1811.0
 texture = ExtResource("1_qgrfh")
 
 [node name="Lyra" parent="." unique_id=1363985345 instance=ExtResource("1_7qb4f")]

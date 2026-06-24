@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cknn1ifiwxcbm" path="res://PrkjtResonanz/scripts/player/Player.cs" id="1_tp8mg"]
 [ext_resource type="Texture2D" uid="uid://dx5xjnwf6n4nk" path="res://PrkjtResonanz/assets/sprites/lyra/ChatGPT Image 8. Juni 2026, 12_32_37(1).png" id="2_eywtg"]
+[ext_resource type="Script" uid="uid://csfifbn7otdqs" path="res://PrkjtResonanz/scenes/player/PlayerMovement.cs" id="3_ehwie"]
+[ext_resource type="Script" uid="uid://6a425vwuowrf" path="res://PrkjtResonanz/scenes/player/PlayerCombat.cs" id="4_ky7ax"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8mub"]
 radius = 19.0
@@ -34,5 +36,11 @@ shape = SubResource("RectangleShape2D_tp8mg")
 position = Vector2(1, -2)
 zoom = Vector2(3, 3)
 limit_smoothed = true
+
+[node name="Movement Script" type="Node" parent="." unique_id=945880084]
+script = ExtResource("3_ehwie")
+
+[node name="Combat Script" type="Node" parent="." unique_id=1956134812]
+script = ExtResource("4_ky7ax")
 
 [connection signal="body_entered" from="AttackHitBox" to="." method="_on_attack_hit_box_body_entered"]
