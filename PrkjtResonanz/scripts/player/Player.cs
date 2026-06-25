@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : CharacterBody2D{	
+public partial class Player : CharacterBody2D, IDamageable{	
 	
 	// Movement Parameter
 	[Export]
@@ -18,35 +18,55 @@ public partial class Player : CharacterBody2D{
 	// Signals
 	[Signal] public delegate void PlayerDamagedEventHandler(int Damage);
 
-	private float _coyoteTimer = 0f;
-	private bool _onAttack = false;
-	private float _attackTimer = 0f;
+	private float _coyoteTimer;
+	private bool _onAttack;
+	private float _attackTimer;
 	private Area2D _attackHitbox;
 	private Sprite2D _sprite;
+	private HealthComponent _healthComponent;
+	private AttackComponent _attackComponent;
+	private IDamageable _currentTarget;
 
 	public override void _Ready(){
 		
 		// Referenz zu AttackHitBox
 		_attackHitbox = GetNode<Area2D>("AttackHitBox");
 		
-		_attackHitbox.Monitoring = false;
+		_attackHitbox.Monitoring = true;
 		
 		// abonieren von AttackHitBox
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
 		
 		// Referenz zu Sprite2D
 		_sprite = GetNode<Sprite2D>("Sprite2D");
-		
+
+		_healthComponent = GetNode<HealthComponent>("HealthComponent");
+		_attackComponent = GetNode<AttackComponent>("AttackComponent");
+
+		_attackComponent.AttackExecuted += OnAttackExecuted;
 		
 		GetNode<GameManager>("/root/GameManager").ConnectPlayer(this);
 	}
-	
+
+	public void TakeDamage(int damage)
+	{
+		_healthComponent.TakeDamage(damage);
+	}
+
 	public void GetHit(int damage){
 		EmitSignal(SignalName.PlayerDamaged, damage);
 	}
+
+	public void OnAttackExecuted(int damage)
+	{
+		_currentTarget.TakeDamage(damage);
+	}
 	
 	public void OnAttackHitboxBodyEntered(Node2D body) {
-		if (body is TestEnemy) {
+		if (body is IDamageable currentTarget && body != this)
+		{
+			_currentTarget = currentTarget;
+			_attackComponent.Attack();
 		}
 	}
 	

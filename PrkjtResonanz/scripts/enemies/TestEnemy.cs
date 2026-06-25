@@ -1,12 +1,13 @@
 using Godot;
 
-public partial class TestEnemy : CharacterBody2D
+public partial class TestEnemy : CharacterBody2D, IDamageable
 {
 
 	private Area2D _attackHitbox;
 	private AnimatedSprite2D _animatedSprite2D;
-
-	private AttackComponent _attackComponent = new AttackComponent();
+	private AttackComponent _attackComponent;
+	private HealthComponent _healthComponent;
+	private Player _player;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
@@ -21,16 +22,40 @@ public partial class TestEnemy : CharacterBody2D
 		
 		// abonieren von AttackHitBox
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
-        
-        // TODO: attackComponent abonieren?
+
+		// Referenz zum AttackComponent Node
+		_attackComponent = GetNode<AttackComponent>("AttackComponent");
+
+		_attackComponent.AttackExecuted += OnAttackExecuted;
+		
+		// Referenz zum HealthComponent Node
+		_healthComponent = GetNode<HealthComponent>("HealthComponent");
+		
+		// abonieren der Died Methode des HealthComponents
+		_healthComponent.Died += OnDied;
+	}
+
+	public void TakeDamage(int damage)
+	{
+		_healthComponent.TakeDamage(damage);
 	}
 
 	public void OnAttackHitboxBodyEntered(Node2D body) {
-		if (body is Player) {
-            _attackHitbox.Monitoring = true;
+		if (body is Player player)
+		{
+			_player = player;
 			_attackComponent.Attack();
-			_attackHitbox.Monitoring = false;
 		}
+	}
+
+	public void OnAttackExecuted(int damage)
+	{
+		_player.GetHit(damage);
+	}
+
+	public void OnDied()
+	{
+		_animatedSprite2D.Play("death");
 	}
 	
 	public void OnAnimationFinished(){

@@ -16,10 +16,6 @@ public partial class AttackComponent : Node, IAttacker
 			_onAttack = true;
 			_attackTimer = AttackTime;
 			EmitSignal(SignalName.AttackExecuted, Strength);
-			if (_attackTimer <= 0)
-			{
-				_onAttack = false;
-			}
 		}
 	}
 
