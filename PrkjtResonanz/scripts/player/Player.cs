@@ -60,6 +60,7 @@ public partial class Player : CharacterBody2D, IDamageable{
 	public void OnAttackExecuted(int damage)
 	{
 		_currentTarget.TakeDamage(damage);
+		GD.Print(damage);
 	}
 	
 	public void OnAttackHitboxBodyEntered(Node2D body) {
