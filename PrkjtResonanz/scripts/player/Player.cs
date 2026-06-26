@@ -59,6 +59,8 @@ public partial class Player : CharacterBody2D, IDamageable{
 
 	public void OnAttackExecuted(int damage)
 	{
+		Random rnd = new Random();
+		damage = (int)Math.Ceiling(rnd.NextDouble() * damage);
 		_currentTarget.TakeDamage(damage);
 		GD.Print(damage);
 	}
