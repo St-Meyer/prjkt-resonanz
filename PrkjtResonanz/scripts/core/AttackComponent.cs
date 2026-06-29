@@ -25,7 +25,11 @@ public partial class AttackComponent : Node, IAttacker
 
 	public int CalculateDamage()
 	{
-        
+		double u1 = 1.0 - _rnd.NextDouble();
+		double u2 = 1.0 - _rnd.NextDouble();
+		double normalRandom = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
+		int finalDamage = (int)Math.Round(Strength + normalRandom * Strength * DamageVariance);
+		return finalDamage;
 	}
 
 	public override void _Ready(){
