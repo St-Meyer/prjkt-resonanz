@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 [GlobalClass]
@@ -6,7 +7,10 @@ public partial class AttackComponent : Node, IAttacker
 	[Signal] public delegate void AttackExecutedEventHandler(int damage);
 	[Export] public int Strength = 10;
 	[Export] public float AttackTime = 0.3f;
+	[Export] public float DamageVariance = 0.2f;
+	[Export] public float CritChance = 0.1f;
 
+	private Random _rnd = new Random();
 	private float _attackTimer;
 	private bool _onAttack;
 
@@ -17,6 +21,11 @@ public partial class AttackComponent : Node, IAttacker
 			_attackTimer = AttackTime;
 			EmitSignal(SignalName.AttackExecuted, Strength);
 		}
+	}
+
+	public int CalculateDamage()
+	{
+        
 	}
 
 	public override void _Ready(){

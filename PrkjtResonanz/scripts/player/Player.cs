@@ -26,6 +26,7 @@ public partial class Player : CharacterBody2D, IDamageable{
 	private HealthComponent _healthComponent;
 	private AttackComponent _attackComponent;
 	private IDamageable _currentTarget;
+	private Random _rnd = new Random();
 
 	public override void _Ready(){
 		
@@ -59,8 +60,7 @@ public partial class Player : CharacterBody2D, IDamageable{
 
 	public void OnAttackExecuted(int damage)
 	{
-		Random rnd = new Random();
-		damage = (int)Math.Ceiling(rnd.NextDouble() * damage);
+		damage = (int)Math.Ceiling(_rnd.NextDouble() * damage);
 		_currentTarget.TakeDamage(damage);
 		GD.Print(damage);
 	}
