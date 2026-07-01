@@ -19,7 +19,7 @@ public partial class AttackComponent : Node, IAttacker
 		{
 			_onAttack = true;
 			_attackTimer = AttackTime;
-			EmitSignal(SignalName.AttackExecuted, Strength);
+			EmitSignal(SignalName.AttackExecuted, CalculateDamage());
 		}
 	}
 
