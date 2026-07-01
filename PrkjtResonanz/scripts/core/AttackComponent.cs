@@ -27,8 +27,15 @@ public partial class AttackComponent : Node, IAttacker
 	{
 		double u1 = 1.0 - _rnd.NextDouble();
 		double u2 = 1.0 - _rnd.NextDouble();
+        // Box-Muller-Transform
 		double normalRandom = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
-		int finalDamage = (int)Math.Round(Strength + normalRandom * Strength * DamageVariance);
+		int finalDamage = Math.Max(1, (int)Math.Round(Strength + normalRandom * Strength * DamageVariance));
+		if (_rnd.NextDouble() <= CritChance)
+		{
+			float maxBasicDamage = Strength + Strength * DamageVariance;
+            double multiplicator = _rnd.NextDouble() * (2-1) + 1;
+			finalDamage = (int)Math.Round(maxBasicDamage * multiplicator);
+		}
 		return finalDamage;
 	}
 
