@@ -14,9 +14,6 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 	// Physics Parameter
 	[Export]
 	public float CoyoteTime = 0.1f;
-	
-	// Signals
-	[Signal] public delegate void PlayerDamagedEventHandler(int Damage);
 
 	private float _coyoteTimer;
 	private bool _onAttack;
@@ -26,14 +23,13 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 	private HealthComponent _healthComponent;
 	private AttackComponent _attackComponent;
 	private IDamageable _currentTarget;
-	private Random _rnd = new Random();
 
 	public override void _Ready(){
 		
 		// Referenz zu AttackHitBox
 		_attackHitbox = GetNode<Area2D>("AttackHitBox");
 		
-		_attackHitbox.Monitoring = true;
+		_attackHitbox.Monitoring = false;
 		
 		// abonieren von AttackHitBox
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
@@ -45,8 +41,6 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		_attackComponent = GetNode<AttackComponent>("AttackComponent");
 
 		_attackComponent.AttackExecuted += OnAttackExecuted;
-		
-		GetNode<GameManager>("/root/GameManager").ConnectPlayer(this);
 	}
 
 	public void TakeDamage(int damage)
@@ -54,13 +48,8 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		_healthComponent.TakeDamage(damage);
 	}
 
-	public void GetHit(int damage){
-		EmitSignal(SignalName.PlayerDamaged, damage);
-	}
-
 	public void OnAttackExecuted(int damage)
 	{
-		damage = (int)Math.Ceiling(_rnd.NextDouble() * damage);
 		_currentTarget.TakeDamage(damage);
 		GD.Print(damage);
 	}

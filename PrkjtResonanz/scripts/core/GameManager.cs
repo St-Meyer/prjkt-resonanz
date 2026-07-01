@@ -11,7 +11,7 @@ public partial class GameManager : Node
 	public void ConnectPlayer(Player player) {
 		// abonieren des HandlePlayerDamage Signals. 
 		// Reagiert nur, wenn GetHit ein Signal sendet.
-		player.PlayerDamaged += HandlePlayerDamage;
+        
 	}
 	
 	public void HandlePlayerDamage(int damage){

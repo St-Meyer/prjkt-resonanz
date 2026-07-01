@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dv74mp6nicxlf" path="res://PrkjtResonanz/assets/sprites/enemies/New Piskel(3).png" id="3_dvxce"]
 [ext_resource type="Script" uid="uid://tkeqk0hl3nyl" path="res://PrkjtResonanz/scripts/core/AttackComponent.cs" id="4_rgnb7"]
 [ext_resource type="Script" uid="uid://clpt8oe462y2" path="res://PrkjtResonanz/scripts/core/HealthComponent.cs" id="5_e7r3s"]
+[ext_resource type="Script" uid="uid://bpn84e1svijvi" path="res://PrkjtResonanz/scripts/core/DetectionComponent.cs" id="6_e7r3s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_07wie"]
 radius = 21.0
@@ -89,6 +90,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvxce"]
 size = Vector2(34, 35)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4xr3m"]
+radius = 200.0
+
 [node name="TestEnemy" type="CharacterBody2D" unique_id=1099546113]
 script = ExtResource("1_jou66")
 
@@ -114,3 +118,11 @@ script = ExtResource("4_rgnb7")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1476121335]
 script = ExtResource("5_e7r3s")
+
+[node name="DetectionComponent" type="Node2D" parent="." unique_id=460203960]
+script = ExtResource("6_e7r3s")
+
+[node name="DetectionArea" type="Area2D" parent="DetectionComponent" unique_id=1599544668]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionComponent/DetectionArea" unique_id=1201965140]
+shape = SubResource("CircleShape2D_4xr3m")
