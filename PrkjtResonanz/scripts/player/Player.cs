@@ -21,7 +21,7 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 	private bool _onAttack;
 	private float _attackTimer;
 	private Area2D _attackHitbox;
-	private Sprite2D _sprite;
+	private AnimatedSprite2D _animatedSprite2D;
 	private AttackComponent _attackComponent;
 	private IDamageable _currentTarget;
 
@@ -36,7 +36,9 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
 		
 		// Referenz zu Sprite2D
-		_sprite = GetNode<Sprite2D>("Sprite2D");
+		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
+
 
 		HealthComponent = GetNode<HealthComponent>("HealthComponent");
 		_attackComponent = GetNode<AttackComponent>("AttackComponent");
@@ -69,7 +71,12 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 
 	public void OnDied()
 	{
-		GD.Print("GAME OVER");
+		_animatedSprite2D.Play("death");
+	}
+
+	public void OnAnimationFinished()
+	{
+		QueueFree();
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -125,13 +132,13 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 			
 			// Looking right
 			if (direction < 0) {
-				_sprite.FlipH = true;
+				_animatedSprite2D.FlipH = false;
 				_attackHitbox.Position = new Vector2(-Mathf.Abs(
 					_attackHitbox.Position.X), _attackHitbox.Position.Y);
 			}
 			// Looking left
 			else {
-				_sprite.FlipH = false;
+				_animatedSprite2D.FlipH = true;
 				_attackHitbox.Position = new Vector2(Mathf.Abs(
 					_attackHitbox.Position.X), _attackHitbox.Position.Y);
 			} 

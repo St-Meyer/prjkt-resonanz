@@ -2,12 +2,68 @@
 
 [ext_resource type="Script" uid="uid://cknn1ifiwxcbm" path="res://PrkjtResonanz/scripts/player/Player.cs" id="1_tp8mg"]
 [ext_resource type="Texture2D" uid="uid://dx5xjnwf6n4nk" path="res://PrkjtResonanz/assets/sprites/lyra/ChatGPT Image 8. Juni 2026, 12_32_37(1).png" id="2_eywtg"]
+[ext_resource type="Texture2D" uid="uid://cgymr7yh6xedf" path="res://PrkjtResonanz/assets/sprites/lyra/tod2(2).png" id="2_ky7ax"]
 [ext_resource type="Script" uid="uid://clpt8oe462y2" path="res://PrkjtResonanz/scripts/core/HealthComponent.cs" id="3_ehwie"]
 [ext_resource type="Script" uid="uid://tkeqk0hl3nyl" path="res://PrkjtResonanz/scripts/core/AttackComponent.cs" id="4_ky7ax"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8mub"]
 radius = 19.0
 height = 72.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky7ax"]
+atlas = ExtResource("2_ky7ax")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmhjf"]
+atlas = ExtResource("2_ky7ax")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anecr"]
+atlas = ExtResource("2_ky7ax")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eamyc"]
+atlas = ExtResource("2_ky7ax")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5s14"]
+atlas = ExtResource("2_ky7ax")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbyxq"]
+atlas = ExtResource("2_eywtg")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tmhjf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky7ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmhjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anecr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eamyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5s14")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbyxq")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp8mg"]
 size = Vector2(40, 30)
@@ -19,11 +75,11 @@ script = ExtResource("1_tp8mg")
 position = Vector2(-3, -2)
 shape = SubResource("CapsuleShape2D_w8mub")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472756540]
-position = Vector2(-1, -4)
-rotation = 3.1415927
-scale = Vector2(0.068, -0.074)
-texture = ExtResource("2_eywtg")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1640823629]
+position = Vector2(-1.8749983, -4.75)
+scale = Vector2(0.5019531, 0.58984375)
+sprite_frames = SubResource("SpriteFrames_tmhjf")
+animation = &"idle"
 
 [node name="AttackHitBox" type="Area2D" parent="." unique_id=1115798563]
 position = Vector2(37, 0)
