@@ -9,14 +9,16 @@ public partial class GameManager : Node
 	}
 	
 	public void ConnectPlayer(Player player) {
+
 		// abonieren des HandlePlayerDamage Signals. 
 		// Reagiert nur, wenn GetHit ein Signal sendet.
-        
+		player.HealthComponent.HealthChanged += HandleHealthChanged;
 	}
 	
-	public void HandlePlayerDamage(int damage){
+	public void HandleHealthChanged(int newHealth){
+
 		var playerData = GetNode<PlayerData>("/root/PlayerData");
-		playerData.CurrentHealth -= damage;
+		playerData.CurrentHealth = newHealth;
 		playerData.EmitSignal(PlayerData.SignalName.HealthChanged, 
 										playerData.CurrentHealth);
 	}

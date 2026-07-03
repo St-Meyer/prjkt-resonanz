@@ -14,18 +14,19 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 	// Physics Parameter
 	[Export]
 	public float CoyoteTime = 0.1f;
-
+	
+	public HealthComponent HealthComponent;
+	
 	private float _coyoteTimer;
 	private bool _onAttack;
 	private float _attackTimer;
 	private Area2D _attackHitbox;
 	private Sprite2D _sprite;
-	private HealthComponent _healthComponent;
 	private AttackComponent _attackComponent;
 	private IDamageable _currentTarget;
 
-	public override void _Ready(){
-		
+	public override void _Ready()
+	{
 		// Referenz zu AttackHitBox
 		_attackHitbox = GetNode<Area2D>("AttackHitBox");
 		
@@ -37,15 +38,19 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		// Referenz zu Sprite2D
 		_sprite = GetNode<Sprite2D>("Sprite2D");
 
-		_healthComponent = GetNode<HealthComponent>("HealthComponent");
+		HealthComponent = GetNode<HealthComponent>("HealthComponent");
 		_attackComponent = GetNode<AttackComponent>("AttackComponent");
 
 		_attackComponent.AttackExecuted += OnAttackExecuted;
+
+		HealthComponent.Died += OnDied;
+		
+		GetNode<GameManager>("/root/GameManager").ConnectPlayer(this);
 	}
 
 	public void TakeDamage(int damage)
 	{
-		_healthComponent.TakeDamage(damage);
+		HealthComponent.TakeDamage(damage);
 	}
 
 	public void OnAttackExecuted(int damage)
@@ -60,6 +65,11 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 			_currentTarget = currentTarget;
 			_attackComponent.Attack();
 		}
+	}
+
+	public void OnDied()
+	{
+		GD.Print("GAME OVER");
 	}
 	
 	public override void _PhysicsProcess(double delta)

@@ -15,9 +15,7 @@ public partial class HealthComponent : Node, IDamageable
 	public void TakeDamage(int damage)
 	{
 		_currentHealth -= damage;
-		if (_currentHealth > 0){
-			EmitSignal(SignalName.HealthChanged, _currentHealth);
-		}
+		EmitSignal(SignalName.HealthChanged, _currentHealth);
 		if (_currentHealth <= 0){
 			EmitSignal(SignalName.Died);
 		}
