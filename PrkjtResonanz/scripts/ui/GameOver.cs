@@ -19,11 +19,11 @@ public partial class GameOver : Control
 
 	public void HandleLoadButtonPressed()
 	{
-		GD.Print("Load Pressed");
+		GetTree().ChangeSceneToFile("res://PrkjtResonanz/scenes/world/test_level.tscn");
 	}
 
 	public void HandleMainMenuButtonPressed()
 	{
-		GD.Print("Main Menu Pressed");
+		GetTree().ChangeSceneToFile("res://PrkjtResonanz/scenes/ui/start_screen.tscn");
 	}
 }

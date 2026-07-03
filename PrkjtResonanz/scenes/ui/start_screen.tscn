@@ -2,12 +2,17 @@
 
 [ext_resource type="Script" uid="uid://bvmbu2hvp74gc" path="res://PrkjtResonanz/scripts/ui/StartScreen.cs" id="1_lofeo"]
 [ext_resource type="Texture2D" uid="uid://c8j83s1p2fgkn" path="res://PrkjtResonanz/assets/backgrounds/gothic-pixel-cathedral-stockcake_jpg.png" id="1_trsf5"]
+[ext_resource type="AudioStream" uid="uid://cbj6e40bhux4y" path="res://PrkjtResonanz/assets/audio/music/PRJKT Resonanz (Remastered).mp3" id="2_144m1"]
 [ext_resource type="Texture2D" uid="uid://k1njbu0mbqll" path="res://PrkjtResonanz/assets/logos/Neues Projekt(2).png" id="2_lofeo"]
 
 [node name="StartScreen" type="Control" unique_id=2080555909]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_lofeo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1996014107]
+stream = ExtResource("2_144m1")
+autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1970063847]
 layout_mode = 0

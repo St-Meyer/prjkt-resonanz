@@ -7,7 +7,7 @@ public partial class StartScreen : Control
 	private Button _btnLoadGame;
 	private Button _btnOptions;
 	private Button _btnExitGame;
-	
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -34,11 +34,12 @@ public partial class StartScreen : Control
 
 	private void HandleLoadGamePressed()
 	{
+		// TODO: Replace, after Save System is added
 		GetTree().ChangeSceneToFile("res://PrkjtResonanz/scenes/world/test_level.tscn");
 	}
 
 	private void HandleNewGamePressed()
 	{
-		GD.Print("New Game pressed");
+		GetTree().ChangeSceneToFile("res://PrkjtResonanz/scenes/world/test_level.tscn");
 	}
 }
