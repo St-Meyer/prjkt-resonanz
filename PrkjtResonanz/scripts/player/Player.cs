@@ -20,6 +20,7 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 	private float _coyoteTimer;
 	private bool _onAttack;
 	private float _attackTimer;
+	private bool _isDead;
 	private Area2D _attackHitbox;
 	private AnimatedSprite2D _animatedSprite2D;
 	private AttackComponent _attackComponent;
@@ -27,6 +28,7 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 
 	public override void _Ready()
 	{
+		_isDead = false;
 		// Referenz zu AttackHitBox
 		_attackHitbox = GetNode<Area2D>("AttackHitBox");
 		
@@ -72,11 +74,18 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 	public void OnDied()
 	{
 		_animatedSprite2D.Play("death");
+		_isDead = true;
 	}
 
-	public void OnAnimationFinished()
+	public async void OnAnimationFinished()
 	{
-		QueueFree();
+		if(_isDead)
+		{
+			GD.Print("Dead Scene loading...");
+			await ToSignal(GetTree().CreateTimer(1.0), "timeout");
+			GetTree().ChangeSceneToFile("res://PrkjtResonanz/scenes/ui/game_over.tscn");
+		}
+
 	}
 	
 	public override void _PhysicsProcess(double delta)

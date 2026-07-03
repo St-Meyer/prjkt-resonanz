@@ -1106,6 +1106,12 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_q2kx0")
 sources/0 = SubResource("TileSetAtlasSource_p03u1")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xr3m"]
+bg_color = Color(0.073127456, 0, 0.87174207, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4pu3"]
+bg_color = Color(3.0322374e-06, 0.7328787, 0.3923558, 1)
+
 [node name="TestLevel" type="Node2D" unique_id=490565684]
 script = ExtResource("1_g8wtx")
 
@@ -1137,5 +1143,7 @@ script = ExtResource("6_p03u1")
 [node name="ProgressBar" type="ProgressBar" parent="UI" unique_id=606880362]
 offset_left = 31.0
 offset_top = 28.0
-offset_right = 485.0
-offset_bottom = 75.0
+offset_right = 220.0
+offset_bottom = 51.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4xr3m")
+theme_override_styles/fill = SubResource("StyleBoxFlat_s4pu3")

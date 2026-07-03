@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://df6w6dt7k8g34"]
+
+[ext_resource type="Texture2D" uid="uid://dcqaug16ceq0o" path="res://PrkjtResonanz/assets/backgrounds/rainy-pixel-night-stockcake_jpg.png" id="1_c74qo"]
+[ext_resource type="Script" uid="uid://cyf1syg3uiqwb" path="res://PrkjtResonanz/scripts/ui/GameOver.cs" id="1_cyspy"]
+[ext_resource type="FontFile" uid="uid://dvsb436h2lior" path="res://PrkjtResonanz/assets/fonts/Skateblade-Regular.ttf" id="2_cyspy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyspy"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c74qo"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="GameOver" type="Control" unique_id=1271311123]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_cyspy")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1355203968]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 646.0
+offset_bottom = 358.0
+texture = ExtResource("1_c74qo")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=610015617]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 132.0
+offset_right = 501.0
+offset_bottom = 262.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1047396813]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_cyspy")
+theme_override_font_sizes/font_size = 50
+text = "GAME OVER"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=375121700]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Load" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=291302013]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cyspy")
+text = "Load"
+
+[node name="MainMenu" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=700152422]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c74qo")
+text = "Main Menu"
