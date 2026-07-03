@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://tkeqk0hl3nyl" path="res://PrkjtResonanz/scripts/core/AttackComponent.cs" id="4_ky7ax"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8mub"]
-radius = 19.0
-height = 72.0
+radius = 13.0
+height = 44.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ky7ax"]
 atlas = ExtResource("2_ky7ax")
@@ -66,26 +66,26 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp8mg"]
-size = Vector2(40, 30)
+size = Vector2(24, 19)
 
 [node name="Lyra" type="CharacterBody2D" unique_id=1363985345]
 script = ExtResource("1_tp8mg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=344329877]
-position = Vector2(-3, -2)
 shape = SubResource("CapsuleShape2D_w8mub")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1640823629]
-position = Vector2(-1, -3.4999998)
-scale = Vector2(0.5253906, 0.5859375)
+position = Vector2(3.8146973e-06, -1.0000005)
+scale = Vector2(0.2783203, 0.34375)
 sprite_frames = SubResource("SpriteFrames_tmhjf")
 animation = &"idle"
 
 [node name="AttackHitBox" type="Area2D" parent="." unique_id=1115798563]
-position = Vector2(37, 0)
+position = Vector2(-27, 1)
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox" unique_id=508117594]
+position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_tp8mg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=205946456]

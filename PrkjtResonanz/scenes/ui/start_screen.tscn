@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bsxopv0m4hx4d"]
+
+[ext_resource type="Script" uid="uid://bvmbu2hvp74gc" path="res://PrkjtResonanz/scripts/ui/StartScreen.cs" id="1_lofeo"]
+[ext_resource type="Texture2D" uid="uid://c8j83s1p2fgkn" path="res://PrkjtResonanz/assets/backgrounds/gothic-pixel-cathedral-stockcake_jpg.png" id="1_trsf5"]
+[ext_resource type="Texture2D" uid="uid://k1njbu0mbqll" path="res://PrkjtResonanz/assets/logos/Neues Projekt(2).png" id="2_lofeo"]
+
+[node name="StartScreen" type="Control" unique_id=2080555909]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lofeo")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1970063847]
+layout_mode = 0
+offset_right = 641.0
+offset_bottom = 355.0
+texture = ExtResource("1_trsf5")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=22745066]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 14.0
+offset_right = 258.0
+offset_bottom = 103.0
+texture = ExtResource("2_lofeo")
+expand_mode = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=940948423]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 191.0
+offset_right = 132.0
+offset_bottom = 327.0
+
+[node name="btnNewGame" type="Button" parent="HBoxContainer" unique_id=2118129264]
+layout_mode = 2
+text = "New Game"
+
+[node name="btnLoadGame" type="Button" parent="HBoxContainer" unique_id=915146593]
+layout_mode = 2
+text = "Load Game"
+
+[node name="btnOptions" type="Button" parent="HBoxContainer" unique_id=1654270951]
+layout_mode = 2
+text = "Options"
+
+[node name="btnExit" type="Button" parent="HBoxContainer" unique_id=1257998424]
+layout_mode = 2
+text = "Exit Game"
