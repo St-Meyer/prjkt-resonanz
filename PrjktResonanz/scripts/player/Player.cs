@@ -19,6 +19,7 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 	private bool _onAttack;
 	private float _attackTimer;
 	private bool _isDead;
+	private bool _isInCutscene;
 	private Area2D _attackHitbox;
 	private AnimatedSprite2D _animatedSprite2D;
 	private AttackComponent _attackComponent;
@@ -49,6 +50,8 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		HealthComponent.Died += OnDied;
 		
 		GetNode<GameManager>("/root/GameManager").ConnectPlayer(this);
+		GetNode<DialogueManager>("/root/DialogueManager").DialogueStartet += OnDialogueStarted;
+		GetNode<DialogueManager>("/root/DialogueManager").DialogueEnded += OnDialogueEnded;
 	}
 
 	public void TakeDamage(int damage)
@@ -82,9 +85,19 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		{
 			GD.Print("Dead Scene loading...");
 			await ToSignal(GetTree().CreateTimer(1.0), "timeout");
-			GetTree().ChangeSceneToFile("res://PrkjtResonanz/scenes/ui/game_over.tscn");
+			GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/ui/game_over.tscn");
 		}
 
+	}
+
+	public void OnDialogueStarted()
+	{
+		GetTree().Paused = true;
+	}
+
+	public void OnDialogueEnded()
+	{
+		GetTree().Paused = false;
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -129,9 +142,9 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		// Get the input direction and handle the movement/deceleration.
 		float direction = Input.GetAxis("move_left", "move_right");
 		
-		if (direction != 0)
+		if (direction != 0 && !_isInCutscene)
 		{
-			if (Input.IsActionPressed("speedup") && (IsOnFloor())) {
+			if (Input.IsActionPressed("speedup") && IsOnFloor()) {
 				velocity.X = direction * Speed * 1.5f;
 			}
 			else{

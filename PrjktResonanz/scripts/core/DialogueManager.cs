@@ -6,23 +6,24 @@ using FileAccess = Godot.FileAccess;
 
 public partial class DialogueManager : Node
 {
+
+	[Signal] public delegate void DialogueStartetEventHandler();
+	[Signal] public delegate void DialogueEndedEventHandler();
 	private bool _runningDialogue;
-
 	private int _index;
-
 	private List<DialogueLine> _dialogueLine;
-
 	private DialogueBox _dialogueBox;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-
+		ProcessMode = ProcessModeEnum.Always;
 	}
 
 	public void StartDialogue(string jsonPath)
 	{
 		_runningDialogue = true;
+		EmitSignal(SignalName.DialogueStartet);
 		_index = 0;
 		var json = FileAccess.Open(jsonPath, FileAccess.ModeFlags.Read);
 		if (json != null)
@@ -50,6 +51,7 @@ public partial class DialogueManager : Node
 	public void EndDialogue()
 	{
 		_runningDialogue = false;
+		EmitSignal(SignalName.DialogueEnded);
 		_dialogueBox.Visible = false;
 
 	}

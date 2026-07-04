@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8sl17el8wedj" path="res://PrjktResonanz/assets/ui/textbox.png" id="2_uo2g8"]
 
 [node name="DialogueBox" type="Control" unique_id=793205156]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,10 +43,3 @@ offset_left = 82.0
 offset_top = 240.0
 offset_right = 471.0
 offset_bottom = 322.0
-
-[node name="Next" type="TextureRect" parent="." unique_id=2010855653]
-layout_mode = 0
-offset_left = 492.0
-offset_top = 296.0
-offset_right = 532.0
-offset_bottom = 336.0

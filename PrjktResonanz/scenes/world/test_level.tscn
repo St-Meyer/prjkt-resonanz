@@ -1127,11 +1127,11 @@ offset_bottom = 1811.0
 texture = ExtResource("1_qgrfh")
 
 [node name="Lyra" parent="." unique_id=1363985345 instance=ExtResource("1_7qb4f")]
-position = Vector2(542, 865)
+position = Vector2(565, 894)
 CoyoteTime = 0.5
 
 [node name="TestEnemy" parent="." unique_id=1099546113 instance=ExtResource("3_qgrfh")]
-position = Vector2(1457, 712)
+position = Vector2(653, 892)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1791072517]
 position = Vector2(6, 4)
