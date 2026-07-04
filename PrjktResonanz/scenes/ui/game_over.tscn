@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://df6w6dt7k8g34"]
 
-[ext_resource type="Texture2D" uid="uid://dcqaug16ceq0o" path="res://PrkjtResonanz/assets/backgrounds/rainy-pixel-night-stockcake_jpg.png" id="1_c74qo"]
-[ext_resource type="Script" uid="uid://cyf1syg3uiqwb" path="res://PrkjtResonanz/scripts/ui/GameOver.cs" id="1_cyspy"]
-[ext_resource type="FontFile" uid="uid://dvsb436h2lior" path="res://PrkjtResonanz/assets/fonts/Skateblade-Regular.ttf" id="2_cyspy"]
+[ext_resource type="Texture2D" uid="uid://dcqaug16ceq0o" path="res://PrjktResonanz/assets/backgrounds/rainy-pixel-night-stockcake_jpg.png" id="1_c74qo"]
+[ext_resource type="Script" uid="uid://cyf1syg3uiqwb" path="res://PrjktResonanz/scripts/ui/GameOver.cs" id="1_cyspy"]
+[ext_resource type="FontFile" uid="uid://dvsb436h2lior" path="res://PrjktResonanz/assets/fonts/Skateblade-Regular.ttf" id="2_cyspy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyspy"]
 bg_color = Color(0, 0, 0, 1)

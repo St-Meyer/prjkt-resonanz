@@ -35,11 +35,11 @@ public partial class StartScreen : Control
 	private void HandleLoadGamePressed()
 	{
 		// TODO: Replace, after Save System is added
-		GetTree().ChangeSceneToFile("res://PrkjtResonanz/scenes/world/test_level.tscn");
+		GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/world/test_level.tscn");
 	}
 
 	private void HandleNewGamePressed()
 	{
-		GetTree().ChangeSceneToFile("res://PrkjtResonanz/scenes/world/test_level.tscn");
+		GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/world/test_level.tscn");
 	}
 }

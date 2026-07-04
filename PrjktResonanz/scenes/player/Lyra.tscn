@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dyppfllnvsj2u"]
 
-[ext_resource type="Script" uid="uid://cknn1ifiwxcbm" path="res://PrkjtResonanz/scripts/player/Player.cs" id="1_tp8mg"]
-[ext_resource type="Texture2D" uid="uid://dx5xjnwf6n4nk" path="res://PrkjtResonanz/assets/sprites/lyra/ChatGPT Image 8. Juni 2026, 12_32_37(1).png" id="2_eywtg"]
-[ext_resource type="Texture2D" uid="uid://cgymr7yh6xedf" path="res://PrkjtResonanz/assets/sprites/lyra/tod2(2).png" id="2_ky7ax"]
-[ext_resource type="Script" uid="uid://clpt8oe462y2" path="res://PrkjtResonanz/scripts/core/HealthComponent.cs" id="3_ehwie"]
-[ext_resource type="Script" uid="uid://tkeqk0hl3nyl" path="res://PrkjtResonanz/scripts/core/AttackComponent.cs" id="4_ky7ax"]
+[ext_resource type="Script" uid="uid://cknn1ifiwxcbm" path="res://PrjktResonanz/scripts/player/Player.cs" id="1_tp8mg"]
+[ext_resource type="Texture2D" uid="uid://dx5xjnwf6n4nk" path="res://PrjktResonanz/assets/sprites/lyra/ChatGPT Image 8. Juni 2026, 12_32_37(1).png" id="2_eywtg"]
+[ext_resource type="Texture2D" uid="uid://cgymr7yh6xedf" path="res://PrjktResonanz/assets/sprites/lyra/tod2(2).png" id="2_ky7ax"]
+[ext_resource type="Script" uid="uid://clpt8oe462y2" path="res://PrjktResonanz/scripts/core/HealthComponent.cs" id="3_ehwie"]
+[ext_resource type="Script" uid="uid://tkeqk0hl3nyl" path="res://PrjktResonanz/scripts/core/AttackComponent.cs" id="4_ky7ax"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8mub"]
 radius = 13.0

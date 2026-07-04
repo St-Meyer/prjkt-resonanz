@@ -1,8 +1,7 @@
 # Godot 4+ specific ignores
-/prjkt-resonanz/PrkjtResonanz/assets/source
 .godot/
 .mono/
 /android/
 
 # Quelldateien (lokal, nicht im Repo)
-assets/source/
+assets/

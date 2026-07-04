@@ -15,8 +15,6 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 	[Export]
 	public float CoyoteTime = 0.1f;
 	
-	public HealthComponent HealthComponent;
-	
 	private float _coyoteTimer;
 	private bool _onAttack;
 	private float _attackTimer;
@@ -24,6 +22,7 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 	private Area2D _attackHitbox;
 	private AnimatedSprite2D _animatedSprite2D;
 	private AttackComponent _attackComponent;
+	public HealthComponent HealthComponent;
 	private IDamageable _currentTarget;
 
 	public override void _Ready()

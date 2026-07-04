@@ -1,0 +1,61 @@
+using Godot;
+using System;
+using System.Collections.Generic;
+using System.Text.Json;
+using FileAccess = Godot.FileAccess;
+
+public partial class DialogueManager : Node
+{
+	private bool _runningDialogue;
+
+	private int _index;
+
+	private List<DialogueLine> _dialogueLine;
+
+	private DialogueBox _dialogueBox;
+	
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+
+	}
+
+	public void StartDialogue(string jsonPath)
+	{
+		_runningDialogue = true;
+		_index = 0;
+		var json = FileAccess.Open(jsonPath, FileAccess.ModeFlags.Read);
+		if (json != null)
+		{
+			_dialogueLine = JsonSerializer.Deserialize<List<DialogueLine>>(json.GetAsText());
+		}
+		ShowNextLine();
+	}
+
+	public void ShowNextLine()
+	{
+
+		if (_dialogueLine.Count <= _index)
+		{
+			EndDialogue();
+		}
+		else
+		{
+			_dialogueBox.ShowDialogue(_dialogueLine[_index].Character, _dialogueLine[_index].Text, GD.Load<Texture2D>("res://PrjktResonanz/assets/portraits/" + _dialogueLine[_index].Portrait + ".png"));
+			_index++;
+		}
+
+	}
+
+	public void EndDialogue()
+	{
+		_runningDialogue = false;
+		_dialogueBox.Visible = false;
+
+	}
+
+	public void RegisterDialogueBox(DialogueBox box)
+	{
+		_dialogueBox = box;
+	}
+}
