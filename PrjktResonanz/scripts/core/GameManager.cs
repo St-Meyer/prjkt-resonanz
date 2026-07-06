@@ -7,7 +7,7 @@ public partial class GameManager : Node
 	public override void _Ready(){
 	}
 	
-    // For later
+	// For later
 	public void ConnectPlayer(Player player) {
 	}
 }

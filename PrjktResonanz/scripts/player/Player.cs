@@ -32,7 +32,7 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		HealthComponent = GetNode<HealthComponent>("HealthComponent");
 		_attackComponent = GetNode<AttackComponent>("AttackComponent");
-        
+		
 		_isDead = false;
 		_attackHitbox.Monitoring = false;
 

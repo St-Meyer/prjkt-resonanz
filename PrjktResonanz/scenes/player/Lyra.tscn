@@ -95,6 +95,7 @@ limit_smoothed = true
 
 [node name="HealthComponent" type="Node" parent="." unique_id=539187104]
 script = ExtResource("3_ehwie")
+PlayerDataPath = NodePath("/root/PlayerData")
 
 [node name="AttackComponent" type="Node" parent="." unique_id=1043214243]
 script = ExtResource("4_ky7ax")

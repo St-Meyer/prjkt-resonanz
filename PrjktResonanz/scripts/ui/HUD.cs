@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class HUD : Node
 {
@@ -15,9 +14,11 @@ public partial class HUD : Node
 		
 		// ProgressBar Value setzen
 		_lifeBar.Value = playerData.CurrentHealth;
+		playerData.HealthChanged += HandleHealthChange;
 	}
 
 	public void HandleHealthChange(int newHealth) {
+		GD.Print("_lifeBar.Value = " + newHealth);
 		_lifeBar.Value = newHealth;
 	}
 }
