@@ -5,7 +5,10 @@ public partial class HealthComponent : Node, IDamageable
 {
 	[Signal] public delegate void HealthChangedEventHandler(int newHealth);
 	[Signal] public delegate void DiedEventHandler();
+
+	[Export] public NodePath PlayerDataPath;
 	[Export] public int MaxHealth = 100;
+    
 	private int _currentHealth;
 	private bool _isDead;
 

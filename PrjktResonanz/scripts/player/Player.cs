@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Player : CharacterBody2D, IDamageable, ITargetable{	
 	
@@ -23,32 +22,24 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 	private Area2D _attackHitbox;
 	private AnimatedSprite2D _animatedSprite2D;
 	private AttackComponent _attackComponent;
+	private PlayerData _playerData;
 	public HealthComponent HealthComponent;
 	private IDamageable _currentTarget;
 
 	public override void _Ready()
 	{
-		_isDead = false;
-		// Referenz zu AttackHitBox
 		_attackHitbox = GetNode<Area2D>("AttackHitBox");
-		
-		_attackHitbox.Monitoring = false;
-		
-		// abonieren von AttackHitBox
-		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
-		
-		// Referenz zu Sprite2D
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
-
-
 		HealthComponent = GetNode<HealthComponent>("HealthComponent");
 		_attackComponent = GetNode<AttackComponent>("AttackComponent");
-		
+        
+		_isDead = false;
+		_attackHitbox.Monitoring = false;
+
+		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
+		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
 		_attackComponent.AttackExecuted += OnAttackExecuted;
 		HealthComponent.Died += OnDied;
-		
-		GetNode<GameManager>("/root/GameManager").ConnectPlayer(this);
 	}
 
 	public void TakeDamage(int damage, bool crit)
@@ -85,7 +76,6 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 
 	}
 
-	
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -107,7 +97,6 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		if (Input.IsActionJustPressed("attack") && !_onAttack && !_isDead) {
 			_onAttack = true;
 			_attackHitbox.Monitoring = true;
-			GD.Print("Attack Start");
 			_attackTimer = AttackTime;
 		}
 		if (_attackTimer > 0) {
@@ -115,7 +104,6 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 			if (_attackTimer <= 0) {
 				_onAttack = false;
 				_attackHitbox.Monitoring = false;
-				GD.Print("Attack End");
 			}
 		}
 		// Handle Jump.

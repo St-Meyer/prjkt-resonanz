@@ -15,9 +15,6 @@ public partial class HUD : Node
 		
 		// ProgressBar Value setzen
 		_lifeBar.Value = playerData.CurrentHealth;
-		
-		// Abonieren von HealthChanged
-		playerData.HealthChanged += HandleHealthChange;
 	}
 
 	public void HandleHealthChange(int newHealth) {
