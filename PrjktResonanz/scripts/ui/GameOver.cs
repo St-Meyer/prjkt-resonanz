@@ -9,12 +9,13 @@ public partial class GameOver : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		GetTree().Paused = false;
+		
 		_loadButton = GetNode<Button>("VBoxContainer/HBoxContainer/Load");
 		_mainMenuButton = GetNode<Button>("VBoxContainer/HBoxContainer/MainMenu");
 		
 		_loadButton.Pressed += HandleLoadButtonPressed;
 		_mainMenuButton.Pressed += HandleMainMenuButtonPressed;
-
 	}
 
 	public void HandleLoadButtonPressed()

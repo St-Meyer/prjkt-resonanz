@@ -40,17 +40,10 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 	public void TakeDamage(int damage, bool crit)
 	{
 		_healthComponent.TakeDamage(damage, crit);
-		GD.Print("Take Damage: "+ damage+ " "+ crit);
 		DamageNumber damageNumber = GD.Load<PackedScene>("res://PrjktResonanz/scenes/ui/damage_number.tscn").Instantiate<DamageNumber>();
-		GD.Print("damageNumber geladen");
 		GetTree().CurrentScene.AddChild(damageNumber);
-		GD.Print("Get Tree...");
 		damageNumber.GlobalPosition = GlobalPosition;
-		GD.Print("Global Position: " + GlobalPosition);
 		damageNumber.Setup(damage, crit);
-		GD.Print("Setup...");
-
-
 	}
 
 	public void OnDetectionAreaEntered(Node2D body)

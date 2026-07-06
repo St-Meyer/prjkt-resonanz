@@ -22,6 +22,7 @@ public partial class DialogueManager : Node
 
 	public void StartDialogue(string jsonPath)
 	{
+		GetTree().Paused = true;
 		_runningDialogue = true;
 		EmitSignal(SignalName.DialogueStartet);
 		_index = 0;
@@ -53,7 +54,7 @@ public partial class DialogueManager : Node
 		_runningDialogue = false;
 		EmitSignal(SignalName.DialogueEnded);
 		_dialogueBox.Visible = false;
-
+		GetTree().Paused = false;
 	}
 
 	public void RegisterDialogueBox(DialogueBox box)

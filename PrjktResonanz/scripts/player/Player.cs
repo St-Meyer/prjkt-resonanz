@@ -44,14 +44,11 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 
 		HealthComponent = GetNode<HealthComponent>("HealthComponent");
 		_attackComponent = GetNode<AttackComponent>("AttackComponent");
-
+		
 		_attackComponent.AttackExecuted += OnAttackExecuted;
-
 		HealthComponent.Died += OnDied;
 		
 		GetNode<GameManager>("/root/GameManager").ConnectPlayer(this);
-		GetNode<DialogueManager>("/root/DialogueManager").DialogueStartet += OnDialogueStarted;
-		GetNode<DialogueManager>("/root/DialogueManager").DialogueEnded += OnDialogueEnded;
 	}
 
 	public void TakeDamage(int damage, bool crit)
@@ -82,22 +79,12 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 	{
 		if(_isDead)
 		{
-			GD.Print("Dead Scene loading...");
 			await ToSignal(GetTree().CreateTimer(1.0), "timeout");
 			GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/ui/game_over.tscn");
 		}
 
 	}
 
-	public void OnDialogueStarted()
-	{
-		GetTree().Paused = true;
-	}
-
-	public void OnDialogueEnded()
-	{
-		GetTree().Paused = false;
-	}
 	
 	public override void _PhysicsProcess(double delta)
 	{
