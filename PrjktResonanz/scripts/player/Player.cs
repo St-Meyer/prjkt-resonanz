@@ -104,7 +104,7 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		}
 		
 		// Attack Logic
-		if (Input.IsActionJustPressed("attack") && !_onAttack) {
+		if (Input.IsActionJustPressed("attack") && !_onAttack && !_isDead) {
 			_onAttack = true;
 			_attackHitbox.Monitoring = true;
 			GD.Print("Attack Start");
@@ -119,7 +119,7 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 			}
 		}
 		// Handle Jump.
-		if (Input.IsActionJustPressed("jump") && (IsOnFloor() || _coyoteTimer > 0))
+		if (Input.IsActionJustPressed("jump") && (IsOnFloor() || _coyoteTimer > 0) && !_isDead)
 		{
 			_coyoteTimer = 0;
 			velocity.Y = JumpVelocity;
@@ -128,9 +128,9 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		// Get the input direction and handle the movement/deceleration.
 		float direction = Input.GetAxis("move_left", "move_right");
 		
-		if (direction != 0 && !_isInCutscene)
+		if (direction != 0 && !_isInCutscene && !_isDead)
 		{
-			if (Input.IsActionPressed("speedup") && IsOnFloor()) {
+			if (Input.IsActionPressed("speedup") && IsOnFloor() && !_isDead) {
 				velocity.X = direction * Speed * 1.5f;
 			}
 			else{
