@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://khv8p30p8mhs"]
+
+[ext_resource type="Script" uid="uid://c6dedrtdmwlvk" path="res://PrjktResonanz/scripts/ui/DamageNumber.cs" id="1_4tsgr"]
+
+[node name="DamageNumber" type="Label" unique_id=550837026]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4tsgr")

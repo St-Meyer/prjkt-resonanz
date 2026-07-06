@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://ctduyy02f132j" path="res://PrjktResonanz/scripts/ui/DialogueBox.cs" id="1_qc70l"]
 [ext_resource type="Texture2D" uid="uid://8sl17el8wedj" path="res://PrjktResonanz/assets/ui/textbox.png" id="2_uo2g8"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_qc70l"]
+
 [node name="DialogueBox" type="Control" unique_id=793205156]
 process_mode = 3
 layout_mode = 3
@@ -38,8 +40,12 @@ offset_right = 139.0
 offset_bottom = 221.0
 
 [node name="Dialogtext" type="Label" parent="." unique_id=374609273]
+custom_minimum_size = Vector2(400, 80)
+custom_maximum_size = Vector2(400, 80)
 layout_mode = 0
 offset_left = 82.0
 offset_top = 240.0
-offset_right = 471.0
+offset_right = 479.0
 offset_bottom = 322.0
+label_settings = SubResource("LabelSettings_qc70l")
+autowrap_mode = 3

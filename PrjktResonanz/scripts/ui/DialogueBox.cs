@@ -42,7 +42,6 @@ public partial class DialogueBox : Control
 
 	public override void _PhysicsProcess(double delta)
 	{
-
 		if (Input.IsActionJustPressed("ui_accept"))
 		{
 			_dm.ShowNextLine();

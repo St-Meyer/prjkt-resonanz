@@ -13,42 +13,44 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 	private Node2D _currentTarget;
 	private bool _isChasing;
 	private bool _isInAttackRange;
+
 	[Export] public float Speed = 150.0f;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
 		// Animation Logic
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
-		_animatedSprite2D.Play("idle");
-		
-		// Referenz zu AttackHitBox
 		_attackHitbox = GetNode<Area2D>("AttackHitbox");
-		_attackHitbox.Monitoring = true;
-		
-		// abonieren von AttackHitBox
+		_attackComponent = GetNode<AttackComponent>("AttackComponent");
+		_healthComponent = GetNode<HealthComponent>("HealthComponent");
+		_detectionComponent = GetNode<DetectionComponent>("DetectionComponent");
+
+		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
 		_attackHitbox.BodyExited += OnAttackHitboxBodyExited;
-
-		// Referenz zum AttackComponent Node
-		_attackComponent = GetNode<AttackComponent>("AttackComponent");
-
 		_attackComponent.AttackExecuted += OnAttackExecuted;
-		
-		// Referenz zum HealthComponent Node
-		_healthComponent = GetNode<HealthComponent>("HealthComponent");
-		
-		// abonieren der Died Methode des HealthComponents
 		_healthComponent.Died += OnDied;
-
-		_detectionComponent = GetNode<DetectionComponent>("DetectionComponent");
 		_detectionComponent.TargetDetected += OnDetectionAreaEntered;
 		_detectionComponent.TargetLost += OnDetectionAreaExited;
+
+		_animatedSprite2D.Play("idle");
+		_attackHitbox.Monitoring = true;
 	}
 
-	public void TakeDamage(int damage)
+	public void TakeDamage(int damage, bool crit)
 	{
-		_healthComponent.TakeDamage(damage);
+		_healthComponent.TakeDamage(damage, crit);
+		GD.Print("Take Damage: "+ damage+ " "+ crit);
+		DamageNumber damageNumber = GD.Load<PackedScene>("res://PrjktResonanz/scenes/ui/damage_number.tscn").Instantiate<DamageNumber>();
+		GD.Print("damageNumber geladen");
+		GetTree().CurrentScene.AddChild(damageNumber);
+		GD.Print("Get Tree...");
+		damageNumber.GlobalPosition = GlobalPosition;
+		GD.Print("Global Position: " + GlobalPosition);
+		damageNumber.Setup(damage, crit);
+		GD.Print("Setup...");
+
+
 	}
 
 	public void OnDetectionAreaEntered(Node2D body)
@@ -60,11 +62,8 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 
 	public void OnDetectionAreaExited()
 	{
-		GD.Print("Player lost");
 		_currentTarget = null;
-		GD.Print("_currentTarget = null");
 		_isChasing = false;
-		GD.Print("_isChasing = false");
 	}
 
 	public void OnAttackHitboxBodyEntered(Node2D body) {
@@ -81,11 +80,11 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 		_isInAttackRange = false;
 	}
 
-	public void OnAttackExecuted(int damage)
+	public void OnAttackExecuted(int damage, bool crit)
 	{
 		if (_player != null)
 		{
-			_player.TakeDamage(damage);
+			_player.TakeDamage(damage, crit);
 		}
 	}
 

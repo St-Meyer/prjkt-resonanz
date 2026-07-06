@@ -4,7 +4,7 @@ using Godot;
 [GlobalClass]
 public partial class AttackComponent : Node, IAttacker
 {
-	[Signal] public delegate void AttackExecutedEventHandler(int damage);
+	[Signal] public delegate void AttackExecutedEventHandler(int damage, bool crit);
 	[Export] public int Strength = 10;
 	[Export] public float AttackTime = 0.3f;
 	[Export] public float DamageVariance = 0.2f;
@@ -13,18 +13,21 @@ public partial class AttackComponent : Node, IAttacker
 	private Random _rnd = new Random();
 	private float _attackTimer;
 	private bool _onAttack;
+	private bool _crit;
 
 	public void Attack(){
 		if (!_onAttack)
 		{
 			_onAttack = true;
 			_attackTimer = AttackTime;
-			EmitSignal(SignalName.AttackExecuted, CalculateDamage());
+			var result = CalculateDamage();
+			EmitSignal(SignalName.AttackExecuted, result.Item1, result.Item2);
 		}
 	}
 
-	public int CalculateDamage()
+	public (int, bool) CalculateDamage()
 	{
+		_crit = false;
 		double u1 = 1.0 - _rnd.NextDouble();
 		double u2 = 1.0 - _rnd.NextDouble();
 		// Box-Muller-Transform
@@ -32,11 +35,12 @@ public partial class AttackComponent : Node, IAttacker
 		int finalDamage = Math.Max(1, (int)Math.Round(Strength + normalRandom * Strength * DamageVariance));
 		if (_rnd.NextDouble() <= CritChance)
 		{
+			_crit = true;
 			float maxBasicDamage = Strength + Strength * DamageVariance;
 			double multiplicator = _rnd.NextDouble() * (2-1) + 1;
 			finalDamage = (int)Math.Round(maxBasicDamage * multiplicator);
 		}
-		return finalDamage;
+		return (finalDamage, _crit);
 	}
 
 	public override void _Ready(){

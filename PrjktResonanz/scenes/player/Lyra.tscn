@@ -90,7 +90,7 @@ shape = SubResource("RectangleShape2D_tp8mg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=205946456]
 position = Vector2(1, -2)
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 limit_smoothed = true
 
 [node name="HealthComponent" type="Node" parent="." unique_id=539187104]

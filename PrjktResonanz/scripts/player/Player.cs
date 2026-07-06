@@ -54,15 +54,14 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		GetNode<DialogueManager>("/root/DialogueManager").DialogueEnded += OnDialogueEnded;
 	}
 
-	public void TakeDamage(int damage)
+	public void TakeDamage(int damage, bool crit)
 	{
-		HealthComponent.TakeDamage(damage);
+		HealthComponent.TakeDamage(damage, crit);
 	}
 
-	public void OnAttackExecuted(int damage)
+	public void OnAttackExecuted(int damage, bool crit)
 	{
-		_currentTarget.TakeDamage(damage);
-		GD.Print(damage);
+		_currentTarget.TakeDamage(damage, crit);
 	}
 	
 	public void OnAttackHitboxBodyEntered(Node2D body) {

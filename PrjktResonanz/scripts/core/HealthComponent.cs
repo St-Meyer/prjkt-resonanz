@@ -14,7 +14,7 @@ public partial class HealthComponent : Node, IDamageable
 		_isDead = false;
 	}
 
-	public void TakeDamage(int damage)
+	public void TakeDamage(int damage, bool crit)
 	{
 		if (!_isDead)
 		{
