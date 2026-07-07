@@ -37,6 +37,7 @@ public partial class HealthComponent : Node, IDamageable
 		if (PlayerDataPath != null && !PlayerDataPath.IsEmpty)
 		{
 			_maxHealth = _playerData.MaxHealth;
+			_playerData.CurrentHealth = _maxHealth;
 		}
 		_currentHealth = _maxHealth;
 		_isDead = false;
@@ -52,9 +53,9 @@ public partial class HealthComponent : Node, IDamageable
 			if (PlayerDataPath != null && !PlayerDataPath.IsEmpty)
 			{
 				_playerData.CurrentHealth = _currentHealth;
-				GD.Print("Player Data Emit Signal");
+				GD.Print("_playerData Emit Signal: " + _currentHealth);
 				_playerData.EmitSignal(PlayerData.SignalName.HealthChanged, _currentHealth);
-				GD.Print("Signal versendet");
+				GD.Print("Signal versendet.");
 			}
 			
 			if (_currentHealth <= 0)
