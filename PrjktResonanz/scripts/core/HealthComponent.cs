@@ -20,7 +20,6 @@ public partial class HealthComponent : Node, IDamageable
 		_enemyData = GetNode<EnemyDataComponent>("../EnemyDataComponent");
 		_maxHealth = _enemyData.MaxHealth;
 		_currentHealth = _maxHealth;
-		GD.Print(_maxHealth);
 	}
 	
 	public override void _Ready()
@@ -29,7 +28,6 @@ public partial class HealthComponent : Node, IDamageable
 		if (PlayerDataPath == null || PlayerDataPath.IsEmpty)
 		{
 			CallDeferred(nameof(LoadEnemyData));
-			GD.Print("Enemy Health in HealthComponent: " + _maxHealth);
 		}
 		
 		if (PlayerDataPath != null && !PlayerDataPath.IsEmpty)

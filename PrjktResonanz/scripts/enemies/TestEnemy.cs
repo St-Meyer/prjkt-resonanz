@@ -9,6 +9,7 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 	private AttackComponent _attackComponent;
 	private HealthComponent _healthComponent;
 	private DetectionComponent _detectionComponent;
+	private EnemyDataComponent _enemyData;
 	private Player _player;
 	private Node2D _currentTarget;
 	private bool _isChasing;
@@ -24,7 +25,8 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 		_attackComponent = GetNode<AttackComponent>("AttackComponent");
 		_healthComponent = GetNode<HealthComponent>("HealthComponent");
 		_detectionComponent = GetNode<DetectionComponent>("DetectionComponent");
-
+		_enemyData = GetNode<EnemyDataComponent>("EnemyDataComponent");
+		
 		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
 		_attackHitbox.BodyExited += OnAttackHitboxBodyExited;
@@ -103,7 +105,7 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 		if (_isChasing)
 		{
 			Vector2 direction = (_currentTarget.GlobalPosition - this.GlobalPosition).Normalized();
-			velocity.X = direction.X * Speed;
+			velocity.X = direction.X * _enemyData.Speed;
 			
 			// Looking right
 			if (direction.X < 0)
