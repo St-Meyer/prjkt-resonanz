@@ -12,7 +12,7 @@ public partial class HealthComponent : Node, IDamageable
 	private EnemyDataComponent _enemyData;
 	private int _maxHealth;
 	private int _currentHealth;
-	private bool _isDead;
+	public bool IsDead;
 
 
 	public void LoadEnemyData()
@@ -40,12 +40,12 @@ public partial class HealthComponent : Node, IDamageable
 			_currentHealth = _maxHealth;
 		}
 
-		_isDead = false;
+		IsDead = false;
 	}
 
 	public void TakeDamage(int damage, bool crit)
 	{
-		if (!_isDead)
+		if (!IsDead)
 		{
 			_currentHealth -= damage;
 			EmitSignal(SignalName.HealthChanged, _currentHealth);
@@ -58,7 +58,7 @@ public partial class HealthComponent : Node, IDamageable
 			
 			if (_currentHealth <= 0)
 			{
-				_isDead = true;
+				IsDead = true;
 				EmitSignal(SignalName.Died);
 			}
 		}

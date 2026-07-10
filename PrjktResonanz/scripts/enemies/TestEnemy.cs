@@ -75,7 +75,7 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 
 	public void OnAttackExecuted(int damage, bool crit)
 	{
-		if (_player != null)
+		if (_player != null && !_healthComponent.IsDead)
 		{
 			_player.TakeDamage(damage, crit);
 		}
