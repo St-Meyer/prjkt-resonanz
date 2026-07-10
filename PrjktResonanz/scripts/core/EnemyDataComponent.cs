@@ -27,7 +27,6 @@ public partial class EnemyDataComponent : Node
         var json = FileAccess.Open("res://PrjktResonanz/assets/data/enemies.json", FileAccess.ModeFlags.Read);
         T output = default(T);
 
-
         if (json != null)
         {
             _enemyDatas = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(json.GetAsText());
@@ -36,7 +35,6 @@ public partial class EnemyDataComponent : Node
                 output = _enemyDatas[name].GetProperty(key).Deserialize<T>();
             }
         }
-
         return output;
     }
 }

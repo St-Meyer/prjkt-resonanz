@@ -8,20 +8,14 @@ public partial class HUD : Node
 	public override void _Ready()
 	{
 		var playerData = GetNode<PlayerData>("/root/PlayerData");
-		GD.Print("playerData geladen: " + playerData.Name);
 		_lifeBar = GetNode<ProgressBar>("ProgressBar");
-		GD.Print("_lifeBar geladen: " + _lifeBar.Name);
-
 
 		_lifeBar.Value = playerData.CurrentHealth;
-		GD.Print("_lifeBar.Value in _Ready = " + _lifeBar.Value);
 		playerData.HealthChanged += HandleHealthChange;
-		GD.Print("Playerdata.HealthChanged += HandleHealthChange");
 	}
 
 	public void HandleHealthChange(int newHealth) {
 		_lifeBar.Value = newHealth;
-		GD.Print("_lifeBar.Value = " + newHealth);
 	}
 	
 	public override void _ExitTree()

@@ -3,7 +3,9 @@ using Godot;
 public partial class PlayerData : Node
 {
 	[Export] public int MaxHealth = 100;
-	[Export] public int BasicStrength = 20;
+	[Export] public int BasicStrength = 10;
+	[Export] public float AttackTime = 0.3f;
+	[Export] public int Speed = 200;
 	[Signal] public delegate void HealthChangedEventHandler(int newHealth);
 	public int CurrentHealth;
 

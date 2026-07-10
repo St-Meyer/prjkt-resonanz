@@ -4,16 +4,14 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 	
 	// Movement Parameter
 	[Export]
-	public float Speed = 300.0f;
-	[Export]
 	public float JumpVelocity = -400.0f;
-	[Export]
-	public float AttackTime = 0.3f;
 
 	// Physics Parameter
 	[Export]
 	public float CoyoteTime = 0.1f;
-	
+
+	private int _speed;
+	private float _attackTime;
 	private float _coyoteTimer;
 	private bool _onAttack;
 	private float _attackTimer;
@@ -32,6 +30,10 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		HealthComponent = GetNode<HealthComponent>("HealthComponent");
 		_attackComponent = GetNode<AttackComponent>("AttackComponent");
+		_playerData = GetNode<PlayerData>("/root/PlayerData");
+
+		_speed = _playerData.Speed;
+		_attackTime = _playerData.AttackTime;
 		
 		_isDead = false;
 		_attackHitbox.Monitoring = false;
@@ -97,7 +99,7 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		if (Input.IsActionJustPressed("attack") && !_onAttack && !_isDead) {
 			_onAttack = true;
 			_attackHitbox.Monitoring = true;
-			_attackTimer = AttackTime;
+			_attackTimer = _attackTime;
 		}
 		if (_attackTimer > 0) {
 			_attackTimer -= (float)delta;
@@ -119,10 +121,10 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		if (direction != 0 && !_isInCutscene && !_isDead)
 		{
 			if (Input.IsActionPressed("speedup") && IsOnFloor() && !_isDead) {
-				velocity.X = direction * Speed * 1.5f;
+				velocity.X = direction * _speed * 1.5f;
 			}
 			else{
-				velocity.X = direction * Speed;
+				velocity.X = direction * _speed;
 			}
 			
 			// Looking right
@@ -141,7 +143,7 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, _speed);
 		}
 		
 		Velocity = velocity;

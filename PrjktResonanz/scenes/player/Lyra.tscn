@@ -99,6 +99,6 @@ PlayerDataPath = NodePath("/root/PlayerData")
 
 [node name="AttackComponent" type="Node" parent="." unique_id=1043214243]
 script = ExtResource("4_ky7ax")
-Strength = 50
+PlayerDataPath = NodePath("/root/PlayerData")
 
 [connection signal="body_entered" from="AttackHitBox" to="." method="_on_attack_hit_box_body_entered"]
