@@ -57,6 +57,10 @@ public partial class AttackComponent : Node, IAttacker
 			_onAttack = true;
 			_attackTimer = _attackTime;
 			var result = CalculateDamage();
+			if (PlayerDataPath != null && !PlayerDataPath.IsEmpty)
+			{
+				TimeStop();
+			}
 			EmitSignal(SignalName.AttackExecuted, result.Item1, result.Item2);
 		}
 	}
@@ -78,5 +82,14 @@ public partial class AttackComponent : Node, IAttacker
 		}
 
 		return (finalDamage, _crit);
+	}
+
+	public async void TimeStop()
+	{
+		GD.Print("time stop start");
+		GetTree().Paused = true;
+		await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
+		GetTree().Paused = false;
+		GD.Print("time stop end");
 	}
 }

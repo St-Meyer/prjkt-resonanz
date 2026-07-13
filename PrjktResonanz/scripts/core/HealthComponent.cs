@@ -14,7 +14,6 @@ public partial class HealthComponent : Node, IDamageable
 	private int _currentHealth;
 	public bool IsDead;
 
-
 	public void LoadEnemyData()
 	{
 		_enemyData = GetNode<EnemyDataComponent>("../EnemyDataComponent");
@@ -61,6 +60,4 @@ public partial class HealthComponent : Node, IDamageable
 			}
 		}
 	}
-
-
 }
