@@ -86,10 +86,8 @@ public partial class AttackComponent : Node, IAttacker
 
 	public async void TimeStop()
 	{
-		GD.Print("time stop start");
 		GetTree().Paused = true;
 		await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
 		GetTree().Paused = false;
-		GD.Print("time stop end");
 	}
 }
