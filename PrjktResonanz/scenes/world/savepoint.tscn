@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dsol41c1b6ftp"]
+
+[ext_resource type="Texture2D" uid="uid://lp7gayyct3rt" path="res://PrjktResonanz/assets/world/safepoint_sprite.png" id="1_q8xtr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nno3a"]
+size = Vector2(26, 81)
+
+[node name="Savepoint" type="Area2D" unique_id=1841151316]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2116047092]
+position = Vector2(1, -4)
+shape = SubResource("RectangleShape2D_nno3a")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1885995999]
+offset_left = -39.0
+offset_top = -56.0
+offset_right = 41.0
+offset_bottom = 64.0
+texture = ExtResource("1_q8xtr")

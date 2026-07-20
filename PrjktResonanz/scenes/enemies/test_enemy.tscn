@@ -130,3 +130,4 @@ script = ExtResource("4_rgnb7")
 
 [node name="EnemyDataComponent" type="Node" parent="." unique_id=1458238996]
 script = ExtResource("6_r747s")
+EnemyId = "TestEnemy"
