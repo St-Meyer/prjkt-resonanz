@@ -1,24 +1,21 @@
 using Godot;
 
-public partial class SavePoint : Area2D
+public partial class Savepoint : Area2D
 {
-    [Export] public int SavePointID;
-    private SavePoint _savePoint;
+    [Export] public int SavepointId;
     private SaveManager _saveManager;
 
     public override void _Ready()
     {
-        _savePoint = GetNode<SavePoint>("Safepoint");
-        //_savePoint += OnBodyEntered;
+        _saveManager = GetNode<SaveManager>("/root/SaveManager");
+        BodyEntered += OnBodyEntered;
     }
 
     public void OnBodyEntered(Node2D body)
     {
-        if (body is Player)
-        {
-            _saveManager = GetNode<SaveManager>("/root/SafeManager");
-            _saveManager.Save(SavePointID, 1);
+        if (body is ITargetable)
+        {   
+            _saveManager.Save(SavepointId, 1);
         }
     }
 }
-

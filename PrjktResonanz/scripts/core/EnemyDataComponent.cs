@@ -21,15 +21,8 @@ public partial class EnemyDataComponent : Node
             return;
         }
         Strength = data.Strength;
-        GD.Print(EnemyId + " Stärke: " + Strength);
-
         Speed = data.Speed;
-        GD.Print(EnemyId + " Speed: " + Speed);
-
         MaxHealth = data.MaxHealth;
-        GD.Print(EnemyId + " MaxHealth: " + MaxHealth);
-
         AttackTime = data.Attacktime;
-        GD.Print(EnemyId + " AttackTime: " + AttackTime);
     }
 }

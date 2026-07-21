@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c8wtbolbvum4o" path="res://PrjktResonanz/scripts/ui/HUD.cs" id="6_p03u1"]
 [ext_resource type="PackedScene" uid="uid://bk86movvsnjt1" path="res://PrjktResonanz/scenes/ui/DialogueBox.tscn" id="7_7nb08"]
 [ext_resource type="PackedScene" uid="uid://dsol41c1b6ftp" path="res://PrjktResonanz/scenes/world/savepoint.tscn" id="8_pebtb"]
+[ext_resource type="Script" uid="uid://dposrjp7yhvs6" path="res://PrjktResonanz/scripts/world/Savepoint.cs" id="9_nno3a"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q2kx0"]
 
@@ -1166,3 +1167,5 @@ offset_bottom = 2.0
 
 [node name="Savepoint" parent="." unique_id=2096820419 instance=ExtResource("8_pebtb")]
 position = Vector2(1014, 472)
+script = ExtResource("9_nno3a")
+SavepointId = 1
