@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class GameOver : Control
 {
@@ -10,7 +9,7 @@ public partial class GameOver : Control
 	public override void _Ready()
 	{
 		GetTree().Paused = false;
-		
+
 		_loadButton = GetNode<Button>("VBoxContainer/HBoxContainer/Load");
 		_mainMenuButton = GetNode<Button>("VBoxContainer/HBoxContainer/MainMenu");
 		
@@ -20,6 +19,8 @@ public partial class GameOver : Control
 
 	public void HandleLoadButtonPressed()
 	{
+		var saveManager = GetNode<SaveManager>("/root/SaveManager/"); 
+		saveManager.ActiveSave = saveManager.Load(1);
 		GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/world/test_level.tscn");
 	}
 

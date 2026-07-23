@@ -4,6 +4,9 @@ using FileAccess = Godot.FileAccess;
 
 public partial class SaveManager : Node
 {
+
+    public SaveData ActiveSave;
+
     public void Save(int savepointId, int slotId)
     {
         PlayerData playerData = GetNode<PlayerData>("/root/PlayerData");
