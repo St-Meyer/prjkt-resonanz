@@ -1123,10 +1123,10 @@ scroll_scale = Vector2(0.1, 0.1)
 follow_viewport = false
 
 [node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=1568079081]
-offset_left = 1.0
-offset_top = -434.0
-offset_right = 3191.0
-offset_bottom = 1660.0
+offset_left = 117.0
+offset_top = -415.0
+offset_right = 3307.0
+offset_bottom = 1679.0
 texture = ExtResource("1_qgrfh")
 
 [node name="Lyra" parent="." unique_id=1363985345 instance=ExtResource("1_7qb4f")]
@@ -1165,7 +1165,12 @@ offset_top = 2.0
 offset_right = 3.0
 offset_bottom = 2.0
 
-[node name="Savepoint" parent="." unique_id=2096820419 instance=ExtResource("8_pebtb")]
+[node name="Savepoint" parent="." unique_id=2096820419 groups=["savepoints"] instance=ExtResource("8_pebtb")]
 position = Vector2(1014, 472)
 script = ExtResource("9_nno3a")
 SavepointId = 1
+
+[node name="Savepoint2" parent="." unique_id=1841151316 groups=["savepoints"] instance=ExtResource("8_pebtb")]
+position = Vector2(1725, 690)
+script = ExtResource("9_nno3a")
+SavepointId = 2

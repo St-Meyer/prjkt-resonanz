@@ -19,10 +19,15 @@ public partial class SaveManager : Node
         FileAccess json = FileAccess.Open("user://save_" + slotId + ".json", FileAccess.ModeFlags.Write);
         string jsonString = JsonSerializer.Serialize(save);
         json.StoreString(jsonString);
+        json.Close();
     }
 
     public SaveData Load(int slotId)
     {
+        if (!HasSave(slotId))
+        {
+            return null;
+        }
         SaveData save = new SaveData();
         string jsonPath = "user://save_" + slotId + ".json";
         var json = FileAccess.Open(jsonPath, FileAccess.ModeFlags.Read);

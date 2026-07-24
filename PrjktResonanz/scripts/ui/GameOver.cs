@@ -19,9 +19,12 @@ public partial class GameOver : Control
 
 	public void HandleLoadButtonPressed()
 	{
-		var saveManager = GetNode<SaveManager>("/root/SaveManager/"); 
+		var saveManager = GetNode<SaveManager>("/root/SaveManager"); 
 		saveManager.ActiveSave = saveManager.Load(1);
-		GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/world/test_level.tscn");
+		if (saveManager.ActiveSave != null )
+		{
+			GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/world/test_level.tscn");
+		}
 	}
 
 	public void HandleMainMenuButtonPressed()

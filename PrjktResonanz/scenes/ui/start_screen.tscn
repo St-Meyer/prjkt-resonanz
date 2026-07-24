@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bsxopv0m4hx4d"]
 
 [ext_resource type="Script" uid="uid://bvmbu2hvp74gc" path="res://PrjktResonanz/scripts/ui/StartScreen.cs" id="1_lofeo"]
-[ext_resource type="Texture2D" uid="uid://c8j83s1p2fgkn" path="res://PrjktResonanz/assets/backgrounds/gothic-pixel-cathedral-stockcake_jpg.png" id="1_trsf5"]
 [ext_resource type="AudioStream" uid="uid://cbj6e40bhux4y" path="res://PrjktResonanz/assets/audio/music/PRJKT Resonanz (Remastered).mp3" id="2_144m1"]
 [ext_resource type="Texture2D" uid="uid://k1njbu0mbqll" path="res://PrjktResonanz/assets/logos/Neues Projekt(2).png" id="2_lofeo"]
+[ext_resource type="Texture2D" uid="uid://d1hupmrvl1flo" path="res://PrjktResonanz/assets/backgrounds/ChatGPT Image 19. Juli 2026, 12_46_57.png" id="3_hjqj8"]
 
 [node name="StartScreen" type="Control" unique_id=2080555909]
 layout_mode = 3
@@ -18,10 +18,11 @@ autoplay = true
 layout_mode = 0
 offset_right = 641.0
 offset_bottom = 355.0
-texture = ExtResource("1_trsf5")
+texture = ExtResource("3_hjqj8")
 expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=22745066]
+visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = 14.0

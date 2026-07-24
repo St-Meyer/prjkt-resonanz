@@ -6,6 +6,23 @@ public partial class TestLevel : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		var saveManager = GetNode<SaveManager>("/root/SaveManager");
+		var player = GetNode<Player>("Lyra");
+		var playerData = GetNode<PlayerData>("/root/PlayerData");
+		var savepoints = GetTree().GetNodesInGroup("savepoints");
+		
+		if (saveManager.ActiveSave != null)
+		{
+			foreach (var savepoint in savepoints)
+			{
+				if (savepoint is Savepoint sp && sp.SavepointId == saveManager.ActiveSave.SavePointID)
+				{
+					player.GlobalPosition = sp.GlobalPosition;
+					playerData.CurrentHealth = saveManager.ActiveSave.CurrentHealth;
+					playerData.EmitSignal(PlayerData.SignalName.HealthChanged, playerData.CurrentHealth);
+				}
+			}
+		}
 		GetNode<DialogueManager>("/root/DialogueManager")
 			.StartDialogue("res://PrjktResonanz/assets/dialogues/intro.json");
 	}
