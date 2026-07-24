@@ -51,3 +51,39 @@
 	Bool in TakeDamage, damit Todes-Signal nur 1x feuer bei Tod.
 	Game Over Screen mit Szenenwechsel bei Tod.
 	Start Screen mit funktionieren Buttons und spielernder Titelmusik.
+2026-07-04:
+	Funktionierendes Dialog System
+	Projekt wegen Schreibfehler im Ordner refactored.
+2026-07-06:
+	Funktionierendes Damage Number System.
+2026-07-07:
+	Bugfix: Funktionierende Healthbar nach Reload
+2026-07-08:
+	EnemyDataComponent weiter erarbeitet
+2026-07-10:
+	EnemyDataComponent läuft nun und wird in anderen Components geladen.
+	Bugfix: Gegner greift in der Todesanimation noch an.
+	Gegner Geschwindigkeit wird aus JSON geladen
+2026-07-13:
+	HitStop bei Spielerangriffen hinzugefügt, für mehr Impact
+2026-07-16:
+	SaveData und SaveManager hinzugefügt
+2026-07-17:
+	Save Methode in SaveManager implementiert, wo Save ID und momentane Leben 
+	gespeichert werden.
+	Load Methode implementiert.
+	Methode implemeitiert, die prüft, ob es schon ein Savefile exisitiert.
+2026-07-20:
+	EnemyDatabase hinzugefügt, um GetParent() nicht mehr zu nutzen, da fragil.
+2026-07-21:
+	Savepoint Logic implementiert.
+2026-07-23:
+	Parameter Namen im SaveManager korrigiert.
+	im Game Over Load Button wird jetzt geprüft, ob es einen aktiven Save gibt
+	und wird in einer Variable gespeichert. 
+2026-07-24:
+	Funktionierendes Save System, wo aktuelle Leben und Savepoint ID
+	berücksichtigt werden und bei Spielertod beim korrekten Savepoint geladen
+	wird.
+	Starting Dialogbox wird nur noch aktiviert, wenn es noch keinen aktiven
+	Savepoint gibt. 

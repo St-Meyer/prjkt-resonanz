@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 GameManager="*uid://dvh07x18durhi"
 PlayerData="*uid://bsn6p1fysf4jd"
 DialogueManager="*uid://blsfsbrgewwdn"
+SaveManager="*uid://braigbqhaq1hf"
+EnemyDatabase="*uid://c8vjiqbl5fwxx"
 
 [display]
 
