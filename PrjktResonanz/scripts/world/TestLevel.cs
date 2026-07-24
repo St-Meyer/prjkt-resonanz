@@ -23,8 +23,12 @@ public partial class TestLevel : Node2D
 				}
 			}
 		}
-		GetNode<DialogueManager>("/root/DialogueManager")
+
+		if (saveManager.ActiveSave == null)
+		{
+			GetNode<DialogueManager>("/root/DialogueManager")
 			.StartDialogue("res://PrjktResonanz/assets/dialogues/intro.json");
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
