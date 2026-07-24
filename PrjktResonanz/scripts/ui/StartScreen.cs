@@ -11,6 +11,7 @@ public partial class StartScreen : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		var saveManager = GetNode<SaveManager>("/root/SaveManager");
 		_btnNewGame = GetNode<Button>("HBoxContainer/btnNewGame");
 		_btnLoadGame = GetNode<Button>("HBoxContainer/btnLoadGame");
 		_btnOptions = GetNode<Button>("HBoxContainer/btnOptions");
@@ -20,6 +21,8 @@ public partial class StartScreen : Control
 		_btnLoadGame.Pressed += HandleLoadGamePressed;
 		_btnOptions.Pressed += HandleOptionsPressed;
 		_btnExitGame.Pressed += HandleExitPressed;
+
+		_btnLoadGame.Disabled = !saveManager.HasSave(1);
 	}
 
 	private void HandleExitPressed()
