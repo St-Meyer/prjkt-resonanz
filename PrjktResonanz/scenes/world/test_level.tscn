@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dyppfllnvsj2u" path="res://PrjktResonanz/scenes/player/Lyra.tscn" id="1_7qb4f"]
 [ext_resource type="Script" uid="uid://xgeeh1fym3ev" path="res://PrjktResonanz/scripts/world/TestLevel.cs" id="1_g8wtx"]
 [ext_resource type="Texture2D" uid="uid://decpfikksy7ly" path="res://PrjktResonanz/assets/backgrounds/Nachthimmel.jpg" id="1_qgrfh"]
+[ext_resource type="PackedScene" uid="uid://bfcjbvg8uaqni" path="res://PrjktResonanz/scenes/ui/PauseMenu.tscn" id="2_fmqu3"]
 [ext_resource type="PackedScene" uid="uid://cfcmq740742wp" path="res://PrjktResonanz/scenes/enemies/test_enemy.tscn" id="3_qgrfh"]
 [ext_resource type="Texture2D" uid="uid://bvgqfihhcek65" path="res://PrjktResonanz/assets/world/goodly-2x.png" id="5_q2kx0"]
 [ext_resource type="Script" uid="uid://c8wtbolbvum4o" path="res://PrjktResonanz/scripts/ui/HUD.cs" id="6_p03u1"]
@@ -1143,6 +1144,8 @@ tile_set = SubResource("TileSet_7nb08")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=850460352]
 script = ExtResource("6_p03u1")
+
+[node name="PauseMenu" parent="UI" unique_id=85830723 instance=ExtResource("2_fmqu3")]
 
 [node name="ProgressBar" type="ProgressBar" parent="UI" unique_id=606880362]
 offset_left = 41.0

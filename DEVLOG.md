@@ -87,3 +87,5 @@
 	wird.
 	Starting Dialogbox wird nur noch aktiviert, wenn es noch keinen aktiven
 	Savepoint gibt. 
+2026-07-27:
+	Cache von DamageNumber wird in _Ready geladen und nicht pro Hit.
