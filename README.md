@@ -47,7 +47,7 @@ Early development. Currently building the technical foundation.
 
 ## Made by
 
-**Steve** ([@St-Meyer](https://github.com/St-Meyer)) — design, code, art, and music.
+([@St-Meyer](https://github.com/St-Meyer))
 
 ## License
 
