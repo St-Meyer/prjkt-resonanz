@@ -75,7 +75,7 @@ script = ExtResource("1_tp8mg")
 shape = SubResource("CapsuleShape2D_w8mub")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1640823629]
-position = Vector2(3.8146973e-06, -1.0000005)
+position = Vector2(2.2737368e-13, -2.3841858e-07)
 scale = Vector2(0.2783203, 0.34375)
 sprite_frames = SubResource("SpriteFrames_tmhjf")
 animation = &"idle"

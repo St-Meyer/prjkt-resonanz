@@ -10,6 +10,7 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 	private HealthComponent _healthComponent;
 	private DetectionComponent _detectionComponent;
 	private EnemyDataComponent _enemyData;
+	private PackedScene _damageNumberScene;
 	private Player _player;
 	private Node2D _currentTarget;
 	private bool _isChasing;
@@ -19,14 +20,16 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready(){
-		// Animation Logic
+		
 		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_attackHitbox = GetNode<Area2D>("AttackHitbox");
 		_attackComponent = GetNode<AttackComponent>("AttackComponent");
 		_healthComponent = GetNode<HealthComponent>("HealthComponent");
 		_detectionComponent = GetNode<DetectionComponent>("DetectionComponent");
 		_enemyData = GetNode<EnemyDataComponent>("EnemyDataComponent");
-		
+
+		_damageNumberScene =GD.Load<PackedScene>("res://PrjktResonanz/scenes/ui/damage_number.tscn");
+
 		_animatedSprite2D.AnimationFinished += OnAnimationFinished;
 		_attackHitbox.BodyEntered += OnAttackHitboxBodyEntered;
 		_attackHitbox.BodyExited += OnAttackHitboxBodyExited;
@@ -42,7 +45,7 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 	public void TakeDamage(int damage, bool crit)
 	{
 		_healthComponent.TakeDamage(damage, crit);
-		DamageNumber damageNumber = GD.Load<PackedScene>("res://PrjktResonanz/scenes/ui/damage_number.tscn").Instantiate<DamageNumber>();
+		var damageNumber = _damageNumberScene.Instantiate<DamageNumber>();
 		GetTree().CurrentScene.AddChild(damageNumber);
 		damageNumber.GlobalPosition = GlobalPosition;
 		damageNumber.Setup(damage, crit);
