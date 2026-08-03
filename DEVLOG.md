@@ -89,3 +89,5 @@
 	Savepoint gibt. 
 2026-07-27:
 	Cache von DamageNumber wird in _Ready geladen und nicht pro Hit.
+	README aktualisiert.
+	Erstes Design für Pause Menü erstellt.
