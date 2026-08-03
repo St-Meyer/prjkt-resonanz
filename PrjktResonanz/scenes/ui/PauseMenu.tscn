@@ -4,7 +4,32 @@
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1989943326]
 offset_left = -4.0
-offset_top = -31.0
+offset_top = -19.0
 offset_right = 650.0
-offset_bottom = 389.0
+offset_bottom = 401.0
 color = Color(0, 0, 0, 0.7490196)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=2114921531]
+offset_left = 183.0
+offset_top = 76.0
+offset_right = 424.0
+offset_bottom = 226.0
+color = Color(0.012843475, 0.012843475, 0.012843475, 1)
+
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=1848449206]
+offset_left = 220.0
+offset_top = 99.0
+offset_right = 391.0
+offset_bottom = 200.0
+
+[node name="btnResume" type="Button" parent="HBoxContainer" unique_id=605629947]
+layout_mode = 2
+text = "Resume"
+
+[node name="btnLoad" type="Button" parent="HBoxContainer" unique_id=1024031303]
+layout_mode = 2
+text = "Load"
+
+[node name="btnTitleMenu" type="Button" parent="HBoxContainer" unique_id=1182369669]
+layout_mode = 2
+text = "Title Menu"

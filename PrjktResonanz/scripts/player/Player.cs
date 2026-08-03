@@ -43,7 +43,7 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		_attackComponent.AttackExecuted += OnAttackExecuted;
 		HealthComponent.Died += OnDied;
 	}
-
+	
 	public void TakeDamage(int damage, bool crit)
 	{
 		HealthComponent.TakeDamage(damage, crit);
