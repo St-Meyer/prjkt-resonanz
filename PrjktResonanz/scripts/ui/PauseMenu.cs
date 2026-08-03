@@ -12,4 +12,19 @@ public partial class PauseMenu : Node
         _btnLoad = GetNode<Button>("HBoxContainer/btnLoad");
         _btnTitleMenu = GetNode<Button>("HBoxContainer/btnTitleMenu");
     }
+
+    private void HandleResumePressed()
+    {
+        
+    }
+
+    private void HandleLoadPressed()
+    {
+        
+    }
+
+    private void HandleTitleMenuPressed()
+    {
+        
+    }
 }
