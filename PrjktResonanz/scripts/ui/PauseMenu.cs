@@ -1,50 +1,34 @@
 using Godot;
 
-public partial class PauseMenu : Node
+public partial class PauseMenu : Control
 {
     private Button _btnResume;
     private Button _btnLoad;
     private Button _btnTitleMenu;
-    private Control _pauseMenu;
-    //private ColorRect _background;
-    //private ColorRect _menubox;
-    //private HBoxContainer _container;
 
     public override void _Ready()
     {
-        //_background = GetNode<ColorRect>("ColorRect");
-        //_menubox = GetNode<ColorRect>("ColorRect2");
-        //_container = GetNode<HBoxContainer>("HBoxContainer");
-        _pauseMenu = GetNode<Control>("PauseMenu");
         _btnResume = GetNode<Button>("HBoxContainer/btnResume");
         _btnLoad = GetNode<Button>("HBoxContainer/btnLoad");
         _btnTitleMenu = GetNode<Button>("HBoxContainer/btnTitleMenu");
 
-        _pauseMenu.Visible = false;
+        this.Visible = false;
 
         _btnResume.Pressed += HandleResumePressed;
         _btnLoad.Pressed += HandleLoadPressed;
         _btnTitleMenu.Pressed += HandleTitleMenuPressed;
     }
 
-    public override void _PhysicsProcess(double delta)
-    {
-        if (Input.IsActionJustPressed("pause"))
-        {
-            ShowPauseMenu();
-        }
-    }
-
-    private void ShowPauseMenu()
+    public void ShowPauseMenu()
     {
         GetTree().Paused = true;
-        _pauseMenu.Visible = true;
+        this.Visible = true;
     }    
 
     private void HandleResumePressed()
     {
         GetTree().Paused = false;
-        _pauseMenu.Visible = false;
+        this.Visible = false;
     }
 
     private void HandleLoadPressed()
