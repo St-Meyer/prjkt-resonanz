@@ -17,6 +17,8 @@ public partial class PauseMenu : Control
         _btnResume.Pressed += HandleResumePressed;
         _btnLoad.Pressed += HandleLoadPressed;
         _btnTitleMenu.Pressed += HandleTitleMenuPressed;
+
+        ProcessMode = ProcessModeEnum.Always;
     }
 
     public void ShowPauseMenu()

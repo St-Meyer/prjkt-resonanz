@@ -91,3 +91,7 @@
 	Cache von DamageNumber wird in _Ready geladen und nicht pro Hit.
 	README aktualisiert.
 	Erstes Design für Pause Menü erstellt.
+2026-08-03:
+	Weiter am Pause Menu gearbeitet und Script erstellt.
+2026-08-07:
+	Funktionierendes Pause Menu mit 3 Buttons und Aufruf über Esc
