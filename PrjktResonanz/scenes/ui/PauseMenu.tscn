@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://bfcjbvg8uaqni"]
 
-[node name="PauseMenu" type="Node2D" unique_id=85830723]
+[ext_resource type="Script" uid="uid://dyidft0djk2ud" path="res://PrjktResonanz/scripts/ui/PauseMenu.cs" id="1_w42uw"]
+
+[node name="PauseMenu" type="Control" unique_id=852843435]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_w42uw")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1989943326]
+layout_mode = 0
 offset_left = -4.0
 offset_top = -19.0
 offset_right = 650.0
@@ -10,17 +16,19 @@ offset_bottom = 401.0
 color = Color(0, 0, 0, 0.7490196)
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=2114921531]
-offset_left = 183.0
-offset_top = 76.0
-offset_right = 424.0
-offset_bottom = 226.0
+layout_mode = 0
+offset_left = 184.0
+offset_top = 86.0
+offset_right = 425.0
+offset_bottom = 236.0
 color = Color(0.012843475, 0.012843475, 0.012843475, 1)
 
 [node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=1848449206]
-offset_left = 220.0
-offset_top = 99.0
+layout_mode = 0
+offset_left = 222.0
+offset_top = 109.0
 offset_right = 391.0
-offset_bottom = 200.0
+offset_bottom = 212.0
 
 [node name="btnResume" type="Button" parent="HBoxContainer" unique_id=605629947]
 layout_mode = 2
