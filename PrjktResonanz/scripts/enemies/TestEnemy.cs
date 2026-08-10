@@ -68,6 +68,7 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 		if (body is Player player)
 		{
 			_player = player;
+			_isChasing = false;
 			_isInAttackRange = true;
 		}
 	}
@@ -75,6 +76,7 @@ public partial class TestEnemy : CharacterBody2D, IDamageable
 	public void OnAttackHitboxBodyExited(Node2D body)
 	{
 		_player = null;
+		_isChasing = true;
 		_isInAttackRange = false;
 	}
 
