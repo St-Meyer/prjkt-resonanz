@@ -32,8 +32,7 @@ public partial class StartScreen : Control
 
 	private void HandleOptionsPressed()
 	{
-		// TODO: Options Scene
-		GD.Print("Options pressed");
+		GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/ui/Options.tscn");
 	}
 
 	private void HandleLoadGamePressed()

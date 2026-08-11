@@ -95,3 +95,8 @@
 	Weiter am Pause Menu gearbeitet und Script erstellt.
 2026-08-07:
 	Funktionierendes Pause Menu mit 3 Buttons und Aufruf über Esc
+2026-08-10:
+	Infotext über Speicherpunkt, dass man E drücke muss, zum speichern,
+	welcher verschwindet, wenn man den Savepont verlässt.
+	Gegner jagt Spieler nicht mehr, wenn er in Attackrange ist, um einklemmen
+	zu vermeiden.

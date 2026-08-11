@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dor4xjyq6im8e"]
+
+[ext_resource type="Texture2D" uid="uid://5ivj4wg7jyf4" path="res://PrjktResonanz/assets/backgrounds/ChatGPT Image 6. Juni 2026, 17_27_282.png" id="1_nqage"]
+[ext_resource type="Script" uid="uid://dm87kvafrkjwv" path="res://PrjktResonanz/scripts/ui/Settings.cs" id="1_q3ile"]
+[ext_resource type="FontFile" uid="uid://dvsb436h2lior" path="res://PrjktResonanz/assets/fonts/Skateblade-Regular.ttf" id="2_q3ile"]
+
+[node name="Options" type="Node2D" unique_id=1378345489]
+script = ExtResource("1_q3ile")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1880365636]
+offset_left = 2.0
+offset_right = 649.0
+offset_bottom = 364.0
+texture = ExtResource("1_nqage")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1340279029]
+offset_left = 17.0
+offset_top = 81.0
+offset_right = 79.0
+offset_bottom = 182.0
+
+[node name="btnGrafik" type="Button" parent="VBoxContainer" unique_id=1829900293]
+layout_mode = 2
+text = "Grafik"
+
+[node name="btnSound" type="Button" parent="VBoxContainer" unique_id=311963055]
+layout_mode = 2
+text = "Sound"
+
+[node name="btnZurueck" type="Button" parent="VBoxContainer" unique_id=1198577881]
+layout_mode = 2
+text = "Zurück"
+
+[node name="Label" type="Label" parent="." unique_id=339307177]
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 218.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("2_q3ile")
+theme_override_font_sizes/font_size = 47
+text = "Options"
