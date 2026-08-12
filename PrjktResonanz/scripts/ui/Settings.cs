@@ -9,6 +9,9 @@ public partial class Settings : Node
     private Button _btnGrafikBack;
     private Button _btnSoundBack;
     private Button _btnControlskBack;
+    private Button _btnFullscreen;
+    private Button _btnWindowed;
+    private Button _btnFrameless;
     private PanelContainer _pcGrafik;
     private PanelContainer _pcSound;
     private PanelContainer _pcControl;
@@ -22,6 +25,10 @@ public partial class Settings : Node
         _btnGrafikBack = GetNode<Button>("GrafikControlPanel/VBoxContainer/btnGrafikBack");
         _btnSoundBack = GetNode<Button>("SoundControlPanel/btnSoundBack");
         _btnControlskBack = GetNode<Button>("ControlsControlPanel/btnControlsBack");
+    
+        _btnFullscreen = GetNode<CheckButton>("GrafikControlPanel/VBoxContainer/btnFullscreen");
+        _btnWindowed = GetNode<CheckButton>("GrafikControlPanel/VBoxContainer/btnWindowed");
+        _btnFrameless = GetNode<CheckButton>("GrafikControlPanel/VBoxContainer/btnFrameless");
 
         _pcGrafik = GetNode<PanelContainer>("GrafikControlPanel");
         _pcSound = GetNode<PanelContainer>("SoundControlPanel");
@@ -35,6 +42,9 @@ public partial class Settings : Node
         _btnSound.Pressed += HandleSoundPressed;
         _btnControl.Pressed += HandleControlPressed;
         _btnZurueck.Pressed += HandleZurueckPressed;
+        _btnFullscreen.Pressed += HandleFullscreenChecked;
+        _btnWindowed.Pressed += HandleWindowedChecked;
+        _btnFrameless.Pressed += HandleFramelessChecked;
         _btnGrafikBack.Pressed += HandleBackPressed;
         _btnSoundBack.Pressed += HandleBackPressed;
         _btnControlskBack.Pressed += HandleBackPressed;
@@ -69,6 +79,25 @@ public partial class Settings : Node
         _pcGrafik.Visible = false;
         _pcSound.Visible = false;
         _pcControl.Visible = false;
+    }
+
+    private void HandleFullscreenChecked()
+    {
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false, 0);
+        DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+    }
+
+    private void HandleWindowedChecked()
+    {
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false, 0);
+
+        DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+    }
+
+    private void HandleFramelessChecked()
+    {
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true, 0);
+        DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
     }
 
     private void HandleZurueckPressed()
