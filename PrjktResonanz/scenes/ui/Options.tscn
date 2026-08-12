@@ -4,13 +4,16 @@
 [ext_resource type="Script" uid="uid://dm87kvafrkjwv" path="res://PrjktResonanz/scripts/ui/Settings.cs" id="1_q3ile"]
 [ext_resource type="FontFile" uid="uid://dvsb436h2lior" path="res://PrjktResonanz/assets/fonts/Skateblade-Regular.ttf" id="2_q3ile"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_ghf77"]
+
 [node name="Options" type="Node2D" unique_id=1378345489]
 script = ExtResource("1_q3ile")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1880365636]
-offset_left = 2.0
-offset_right = 649.0
-offset_bottom = 364.0
+offset_left = -3.0
+offset_top = 2.0
+offset_right = 644.0
+offset_bottom = 366.0
 texture = ExtResource("1_nqage")
 expand_mode = 1
 
@@ -23,14 +26,22 @@ offset_bottom = 182.0
 [node name="btnGrafik" type="Button" parent="VBoxContainer" unique_id=1829900293]
 layout_mode = 2
 text = "Grafik"
+alignment = 0
 
 [node name="btnSound" type="Button" parent="VBoxContainer" unique_id=311963055]
 layout_mode = 2
 text = "Sound"
+alignment = 0
+
+[node name="btnControl" type="Button" parent="VBoxContainer" unique_id=1728333470]
+layout_mode = 2
+text = "Tastenbelegung"
+alignment = 0
 
 [node name="btnZurueck" type="Button" parent="VBoxContainer" unique_id=1198577881]
 layout_mode = 2
 text = "Zurück"
+alignment = 0
 
 [node name="Label" type="Label" parent="." unique_id=339307177]
 offset_left = 16.0
@@ -40,3 +51,53 @@ offset_bottom = 106.0
 theme_override_fonts/font = ExtResource("2_q3ile")
 theme_override_font_sizes/font_size = 47
 text = "Options"
+
+[node name="GrafikControlPanel" type="PanelContainer" parent="." unique_id=416578005]
+offset_left = 153.0
+offset_top = 82.0
+offset_right = 555.0
+offset_bottom = 344.0
+
+[node name="TextureRect" type="TextureRect" parent="GrafikControlPanel" unique_id=2061231130]
+modulate = Color(0.11764706, 0.11764706, 0.11764706, 0.627451)
+layout_mode = 2
+texture = SubResource("CanvasTexture_ghf77")
+expand_mode = 1
+
+[node name="btnGrafikBack" type="Button" parent="GrafikControlPanel" unique_id=770376029]
+layout_mode = 2
+text = "Zurück"
+
+[node name="SoundControlPanel" type="PanelContainer" parent="." unique_id=1950313661]
+visible = false
+offset_left = 153.0
+offset_top = 82.0
+offset_right = 555.0
+offset_bottom = 344.0
+
+[node name="TextureRect" type="TextureRect" parent="SoundControlPanel" unique_id=753417865]
+modulate = Color(0.11764706, 0.11764706, 0.11764706, 0.627451)
+layout_mode = 2
+texture = SubResource("CanvasTexture_ghf77")
+expand_mode = 1
+
+[node name="btnSoundBack" type="Button" parent="SoundControlPanel" unique_id=1738146122]
+layout_mode = 2
+text = "Zurück"
+
+[node name="ControlsControlPanel" type="PanelContainer" parent="." unique_id=672427618]
+visible = false
+offset_left = 153.0
+offset_top = 82.0
+offset_right = 555.0
+offset_bottom = 344.0
+
+[node name="TextureRect" type="TextureRect" parent="ControlsControlPanel" unique_id=1429399647]
+modulate = Color(0.11764706, 0.11764706, 0.11764706, 0.627451)
+layout_mode = 2
+texture = SubResource("CanvasTexture_ghf77")
+expand_mode = 1
+
+[node name="btnControlsBack" type="Button" parent="ControlsControlPanel" unique_id=1600797178]
+layout_mode = 2
+text = "Zurück"
