@@ -3,14 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://5ivj4wg7jyf4" path="res://PrjktResonanz/assets/backgrounds/ChatGPT Image 6. Juni 2026, 17_27_282.png" id="1_nqage"]
 [ext_resource type="Script" uid="uid://dm87kvafrkjwv" path="res://PrjktResonanz/scripts/ui/Settings.cs" id="1_q3ile"]
 [ext_resource type="FontFile" uid="uid://dvsb436h2lior" path="res://PrjktResonanz/assets/fonts/Skateblade-Regular.ttf" id="2_q3ile"]
+[ext_resource type="ButtonGroup" uid="uid://bl7tu3uom82im" path="res://PrjktResonanz/scenes/ui/window_button_group.tres" id="4_w3cu4"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ghf77"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_4xr3m"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_s4pu3"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_rstce"]
 
 [node name="Options" type="Node2D" unique_id=1378345489]
 script = ExtResource("1_q3ile")
@@ -75,17 +70,17 @@ layout_mode = 2
 
 [node name="btnFullscreen" type="CheckButton" parent="GrafikControlPanel/VBoxContainer" unique_id=1342769177]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_4xr3m")
+button_group = ExtResource("4_w3cu4")
 text = "Vollbildmodus"
 
 [node name="btnWindowed" type="CheckButton" parent="GrafikControlPanel/VBoxContainer" unique_id=577184343]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_s4pu3")
+button_group = ExtResource("4_w3cu4")
 text = "Fenstermodus"
 
 [node name="btnFrameless" type="CheckButton" parent="GrafikControlPanel/VBoxContainer" unique_id=259052484]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_rstce")
+button_group = ExtResource("4_w3cu4")
 text = "Randloser Fenstermodus"
 
 [node name="btnVSync" type="CheckBox" parent="GrafikControlPanel/VBoxContainer" unique_id=199124675]
