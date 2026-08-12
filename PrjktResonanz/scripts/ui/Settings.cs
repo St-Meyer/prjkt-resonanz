@@ -2,73 +2,73 @@ using Godot;
 
 public partial class Settings : Node
 {
-    private Button btnGrafik;
-    private Button btnSound;
-    private Button btnControl;
-    private Button btnZurueck;
-    private Button btnGrafikBack;
-    private Button btnSoundBack;
-    private Button btnControlskBack;
-    private PanelContainer pcGrafik;
-    private PanelContainer pcSound;
-    private PanelContainer pcControl;
+    private Button _btnGrafik;
+    private Button _btnSound;
+    private Button _btnControl;
+    private Button _btnZurueck;
+    private Button _btnGrafikBack;
+    private Button _btnSoundBack;
+    private Button _btnControlskBack;
+    private PanelContainer _pcGrafik;
+    private PanelContainer _pcSound;
+    private PanelContainer _pcControl;
 
     public override void _Ready()
     {
-        btnGrafik = GetNode<Button>("VBoxContainer/btnGrafik");
-        btnSound = GetNode<Button>("VBoxContainer/btnSound");
-        btnControl = GetNode<Button>("VBoxContainer/btnControl");
-        btnZurueck = GetNode<Button>("VBoxContainer/btnZurueck");
-        btnGrafikBack = GetNode<Button>("GrafikControlPanel/btnGrafikBack");
-        btnSoundBack = GetNode<Button>("SoundControlPanel/btnSoundBack");
-        btnControlskBack = GetNode<Button>("ControlsControlPanel/btnControlsBack");
+        _btnGrafik = GetNode<Button>("VBoxContainer/btnGrafik");
+        _btnSound = GetNode<Button>("VBoxContainer/btnSound");
+        _btnControl = GetNode<Button>("VBoxContainer/btnControl");
+        _btnZurueck = GetNode<Button>("VBoxContainer/btnZurueck");
+        _btnGrafikBack = GetNode<Button>("GrafikControlPanel/VBoxContainer/btnGrafikBack");
+        _btnSoundBack = GetNode<Button>("SoundControlPanel/btnSoundBack");
+        _btnControlskBack = GetNode<Button>("ControlsControlPanel/btnControlsBack");
 
-        pcGrafik = GetNode<PanelContainer>("GrafikControlPanel");
-        pcSound = GetNode<PanelContainer>("SoundControlPanel");
-        pcControl = GetNode<PanelContainer>("ControlsControlPanel");
+        _pcGrafik = GetNode<PanelContainer>("GrafikControlPanel");
+        _pcSound = GetNode<PanelContainer>("SoundControlPanel");
+        _pcControl = GetNode<PanelContainer>("ControlsControlPanel");
 
-        pcGrafik.Visible = false;
-        pcSound.Visible = false;
-        pcControl.Visible = false;
+        _pcGrafik.Visible = false;
+        _pcSound.Visible = false;
+        _pcControl.Visible = false;
 
-        btnGrafik.Pressed += HandleGrafikPressed;
-        btnSound.Pressed += HandleSoundPressed;
-        btnControl.Pressed += HandleControlPressed;
-        btnZurueck.Pressed += HandleZurueckPressed;
-        btnGrafikBack.Pressed += HandleBackPressed;
-        btnSoundBack.Pressed += HandleBackPressed;
-        btnControlskBack.Pressed += HandleBackPressed;
+        _btnGrafik.Pressed += HandleGrafikPressed;
+        _btnSound.Pressed += HandleSoundPressed;
+        _btnControl.Pressed += HandleControlPressed;
+        _btnZurueck.Pressed += HandleZurueckPressed;
+        _btnGrafikBack.Pressed += HandleBackPressed;
+        _btnSoundBack.Pressed += HandleBackPressed;
+        _btnControlskBack.Pressed += HandleBackPressed;
     }
 
     private void HandleGrafikPressed()
     {
         GD.Print("Grafik pressed");
-        pcGrafik.Visible = true;
-        pcSound.Visible = false;
-        pcControl.Visible = false;
+        _pcGrafik.Visible = true;
+        _pcSound.Visible = false;
+        _pcControl.Visible = false;
     }
 
     private void HandleSoundPressed()
     {
         GD.Print("Sound pressed");
-        pcSound.Visible = true;
-        pcGrafik.Visible = false;
-        pcControl.Visible = false;
+        _pcSound.Visible = true;
+        _pcGrafik.Visible = false;
+        _pcControl.Visible = false;
     }
 
     private void HandleControlPressed()
     {
         GD.Print("Tastenbelegung pressed");
-        pcControl.Visible = true;
-        pcSound.Visible = false;
-        pcGrafik.Visible = false;
+        _pcControl.Visible = true;
+        _pcSound.Visible = false;
+        _pcGrafik.Visible = false;
     }
 
     private void HandleBackPressed()
     {
-        pcGrafik.Visible = false;
-        pcSound.Visible = false;
-        pcControl.Visible = false;
+        _pcGrafik.Visible = false;
+        _pcSound.Visible = false;
+        _pcControl.Visible = false;
     }
 
     private void HandleZurueckPressed()

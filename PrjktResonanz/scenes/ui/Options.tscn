@@ -6,14 +6,20 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ghf77"]
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_4xr3m"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_s4pu3"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_rstce"]
+
 [node name="Options" type="Node2D" unique_id=1378345489]
 script = ExtResource("1_q3ile")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1880365636]
 offset_left = -3.0
-offset_top = 2.0
+offset_top = -3.0
 offset_right = 644.0
-offset_bottom = 366.0
+offset_bottom = 361.0
 texture = ExtResource("1_nqage")
 expand_mode = 1
 
@@ -64,9 +70,36 @@ layout_mode = 2
 texture = SubResource("CanvasTexture_ghf77")
 expand_mode = 1
 
-[node name="btnGrafikBack" type="Button" parent="GrafikControlPanel" unique_id=770376029]
+[node name="VBoxContainer" type="VBoxContainer" parent="GrafikControlPanel" unique_id=1254786540]
+layout_mode = 2
+
+[node name="btnFullscreen" type="CheckButton" parent="GrafikControlPanel/VBoxContainer" unique_id=1342769177]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_4xr3m")
+text = "Vollbildmodus"
+
+[node name="btnWindowed" type="CheckButton" parent="GrafikControlPanel/VBoxContainer" unique_id=577184343]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_s4pu3")
+text = "Fenstermodus"
+
+[node name="btnFrameless" type="CheckButton" parent="GrafikControlPanel/VBoxContainer" unique_id=259052484]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_rstce")
+text = "Randloser Fenstermodus"
+
+[node name="btnVSync" type="CheckBox" parent="GrafikControlPanel/VBoxContainer" unique_id=199124675]
+layout_mode = 2
+text = "VSync"
+
+[node name="btnHDR" type="CheckBox" parent="GrafikControlPanel/VBoxContainer" unique_id=973724890]
+layout_mode = 2
+text = "HDR"
+
+[node name="btnGrafikBack" type="Button" parent="GrafikControlPanel/VBoxContainer" unique_id=770376029]
 layout_mode = 2
 text = "Zurück"
+alignment = 0
 
 [node name="SoundControlPanel" type="PanelContainer" parent="." unique_id=1950313661]
 visible = false

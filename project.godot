@@ -27,7 +27,8 @@ EnemyDatabase="*uid://c8vjiqbl5fwxx"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=2
+window/size/mode=3
+window/size/resizable=false
 window/size/borderless=true
 window/hdr/request_hdr_output=true
 window/stretch/mode="canvas_items"

@@ -16,8 +16,10 @@ autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1970063847]
 layout_mode = 0
-offset_right = 641.0
-offset_bottom = 355.0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 644.0
+offset_bottom = 364.0
 texture = ExtResource("3_hjqj8")
 expand_mode = 1
 
