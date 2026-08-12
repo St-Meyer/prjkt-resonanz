@@ -18,6 +18,8 @@ public partial class Settings : Node
 
     public override void _Ready()
     {
+        var mode = DisplayServer.WindowGetMode();
+
         _btnGrafik = GetNode<Button>("VBoxContainer/btnGrafik");
         _btnSound = GetNode<Button>("VBoxContainer/btnSound");
         _btnControl = GetNode<Button>("VBoxContainer/btnControl");
@@ -38,6 +40,19 @@ public partial class Settings : Node
         _pcSound.Visible = false;
         _pcControl.Visible = false;
 
+        switch (mode)
+        {
+            case (DisplayServer.WindowMode.Fullscreen):
+                _btnFullscreen.ButtonPressed = true;
+                break;
+            case (DisplayServer.WindowMode.Windowed):
+                _btnWindowed.ButtonPressed = true;
+                break;
+            case(DisplayServer.WindowMode.Maximized):
+                _btnFrameless.ButtonPressed = true;
+                break;
+        }
+
         _btnGrafik.Pressed += HandleGrafikPressed;
         _btnSound.Pressed += HandleSoundPressed;
         _btnControl.Pressed += HandleControlPressed;
@@ -48,11 +63,11 @@ public partial class Settings : Node
         _btnGrafikBack.Pressed += HandleBackPressed;
         _btnSoundBack.Pressed += HandleBackPressed;
         _btnControlskBack.Pressed += HandleBackPressed;
+
     }
 
     private void HandleGrafikPressed()
     {
-        GD.Print("Grafik pressed");
         _pcGrafik.Visible = true;
         _pcSound.Visible = false;
         _pcControl.Visible = false;
@@ -60,7 +75,6 @@ public partial class Settings : Node
 
     private void HandleSoundPressed()
     {
-        GD.Print("Sound pressed");
         _pcSound.Visible = true;
         _pcGrafik.Visible = false;
         _pcControl.Visible = false;
@@ -68,7 +82,6 @@ public partial class Settings : Node
 
     private void HandleControlPressed()
     {
-        GD.Print("Tastenbelegung pressed");
         _pcControl.Visible = true;
         _pcSound.Visible = false;
         _pcGrafik.Visible = false;
@@ -83,33 +96,27 @@ public partial class Settings : Node
 
     private void HandleFullscreenChecked()
     {
-        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false, 0);
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false, 0);
     }
 
     private void HandleWindowedChecked()
     {
         var index = DisplayServer.WindowGetCurrentScreen();
         var size = new Vector2I(640, 360);
-
-        GD.Print("ScreenGetPosition: " + DisplayServer.ScreenGetPosition(index));
-        GD.Print("ScreenSetSize: " + DisplayServer.ScreenGetSize(index));
-        GD.Print("Berechneter Wert: " + (DisplayServer.ScreenGetPosition(index) +
-                 (DisplayServer.ScreenGetSize(index) -
-                  size) / 2));
-
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
         DisplayServer.WindowSetSize(size);
         DisplayServer.WindowSetPosition(DisplayServer.ScreenGetPosition(index) +
-                                        (DisplayServer.ScreenGetSize(index) - 
-                                         size) / 2);
+                                (DisplayServer.ScreenGetSize(index) -
+                                 size) / 2);
         DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false, 0);
     }
 
     private void HandleFramelessChecked()
     {
-        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true, 0);
+        DisplayServer.WindowSetSize(DisplayServer.ScreenGetSize());
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true, 0);
     }
 
     private void HandleZurueckPressed()
