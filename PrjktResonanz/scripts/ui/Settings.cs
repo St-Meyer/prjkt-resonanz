@@ -89,9 +89,21 @@ public partial class Settings : Node
 
     private void HandleWindowedChecked()
     {
-        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false, 0);
+        var index = DisplayServer.WindowGetCurrentScreen();
+        var size = new Vector2I(640, 360);
+
+        GD.Print("ScreenGetPosition: " + DisplayServer.ScreenGetPosition(index));
+        GD.Print("ScreenSetSize: " + DisplayServer.ScreenGetSize(index));
+        GD.Print("Berechneter Wert: " + (DisplayServer.ScreenGetPosition(index) +
+                 (DisplayServer.ScreenGetSize(index) -
+                  size) / 2));
 
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+        DisplayServer.WindowSetSize(size);
+        DisplayServer.WindowSetPosition(DisplayServer.ScreenGetPosition(index) +
+                                        (DisplayServer.ScreenGetSize(index) - 
+                                         size) / 2);
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false, 0);
     }
 
     private void HandleFramelessChecked()
