@@ -15,10 +15,11 @@ public partial class Settings : Node
     private PanelContainer _pcGrafik;
     private PanelContainer _pcSound;
     private PanelContainer _pcControl;
+    ConfigFile config = new ConfigFile();
 
     public override void _Ready()
     {
-        var mode = DisplayServer.WindowGetMode();
+
 
         _btnGrafik = GetNode<Button>("VBoxContainer/btnGrafik");
         _btnSound = GetNode<Button>("VBoxContainer/btnSound");
@@ -40,16 +41,30 @@ public partial class Settings : Node
         _pcSound.Visible = false;
         _pcControl.Visible = false;
 
+
+        var mode = DisplayServer.WindowGetMode();
+        string modename = "";
+
+        Error err = config.Load("user://settings.cfg");
+
+        if (err != Error.Ok)
+        {
+            return;
+        }
+
         switch (mode)
         {
             case (DisplayServer.WindowMode.Fullscreen):
                 _btnFullscreen.ButtonPressed = true;
+                modename = "Fullscreen";
                 break;
             case (DisplayServer.WindowMode.Windowed):
                 _btnWindowed.ButtonPressed = true;
+                modename = "Windowed";
                 break;
             case(DisplayServer.WindowMode.Maximized):
                 _btnFrameless.ButtonPressed = true;
+                modename = "Maximized";
                 break;
         }
 
