@@ -43,7 +43,7 @@ public partial class Settings : Node
 
 
         var mode = DisplayServer.WindowGetMode();
-        string modename = "";
+
 
         Error err = config.Load("user://settings.cfg");
 
@@ -56,15 +56,12 @@ public partial class Settings : Node
         {
             case (DisplayServer.WindowMode.Fullscreen):
                 _btnFullscreen.ButtonPressed = true;
-                modename = "Fullscreen";
                 break;
             case (DisplayServer.WindowMode.Windowed):
                 _btnWindowed.ButtonPressed = true;
-                modename = "Windowed";
                 break;
             case(DisplayServer.WindowMode.Maximized):
                 _btnFrameless.ButtonPressed = true;
-                modename = "Maximized";
                 break;
         }
 
@@ -113,6 +110,7 @@ public partial class Settings : Node
     {
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
         DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false, 0);
+        saveFile("Fullscreen");
     }
 
     private void HandleWindowedChecked()
@@ -125,6 +123,8 @@ public partial class Settings : Node
                                 (DisplayServer.ScreenGetSize(index) -
                                  size) / 2);
         DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false, 0);
+        saveFile("Windowed");
+
     }
 
     private void HandleFramelessChecked()
@@ -132,10 +132,17 @@ public partial class Settings : Node
         DisplayServer.WindowSetSize(DisplayServer.ScreenGetSize());
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
         DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true, 0);
+        saveFile("Maximized");
+
     }
 
     private void HandleZurueckPressed()
     {
         GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/ui/start_screen.tscn");
+    }
+
+    private void saveFile(string mode)
+    {
+        config.SetValue("Settings", "window_mode", mode);
     }
 }
