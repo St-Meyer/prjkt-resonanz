@@ -19,8 +19,6 @@ public partial class Settings : Node
 
     public override void _Ready()
     {
-
-
         _btnGrafik = GetNode<Button>("VBoxContainer/btnGrafik");
         _btnSound = GetNode<Button>("VBoxContainer/btnSound");
         _btnControl = GetNode<Button>("VBoxContainer/btnControl");
@@ -37,21 +35,24 @@ public partial class Settings : Node
         _pcSound = GetNode<PanelContainer>("SoundControlPanel");
         _pcControl = GetNode<PanelContainer>("ControlsControlPanel");
 
+        // Panel Container werden beim Laden der Szene ausgeblendet
         _pcGrafik.Visible = false;
         _pcSound.Visible = false;
         _pcControl.Visible = false;
 
-
-        var mode = DisplayServer.WindowGetMode();
-
-
+        // Daten werden aus cfg-File geladen
         Error err = config.Load("user://settings.cfg");
 
+        // Wenn das File nicht geladen wird, ignorieren.
         if (err != Error.Ok)
         {
             return;
         }
 
+        // Momentaner Anzeigemodus wird in Variable gespeichert
+        var mode = DisplayServer.WindowGetMode();
+
+        // Button für jeweilige momentane Anzeigeeinstellung wird beim Start aktiviert 
         switch (mode)
         {
             case (DisplayServer.WindowMode.Fullscreen):
@@ -78,6 +79,7 @@ public partial class Settings : Node
 
     }
 
+    // Control Panel für Grafikeinstellungen wird angezeigt
     private void HandleGrafikPressed()
     {
         _pcGrafik.Visible = true;
@@ -85,6 +87,7 @@ public partial class Settings : Node
         _pcControl.Visible = false;
     }
 
+    // Control Panel für Soundeinstellungen wird angezeigt
     private void HandleSoundPressed()
     {
         _pcSound.Visible = true;
@@ -92,6 +95,7 @@ public partial class Settings : Node
         _pcControl.Visible = false;
     }
 
+    // Control Panel für Steuerungseinstellungen wird angezeigt
     private void HandleControlPressed()
     {
         _pcControl.Visible = true;
@@ -99,20 +103,27 @@ public partial class Settings : Node
         _pcGrafik.Visible = false;
     }
 
+    // Alle Control Panels werden ausgeblendet
     private void HandleBackPressed()
     {
         _pcGrafik.Visible = false;
         _pcSound.Visible = false;
         _pcControl.Visible = false;
     }
-
+    // Fenster wird auf Fullscreen gestellt, Randlos und saveFile Methode wird aufgerufen mit
+    // Fullscreen-String Parameter
     private void HandleFullscreenChecked()
     {
         DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
-        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false, 0);
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true, 0);
         saveFile("Fullscreen");
     }
 
+    // Aktueller Monitor und Fenstergröße werden in Variablen gespeichert
+    // Anzeigemodus wird auf Fenstermodus gestellt
+    // Position des Fensters wird mittig des Monitors platziert
+    // Fenster mit Rand
+    // Einstellung wird via saveFile-Methode gespeichert
     private void HandleWindowedChecked()
     {
         var index = DisplayServer.WindowGetCurrentScreen();
@@ -127,6 +138,7 @@ public partial class Settings : Node
 
     }
 
+    // Fenster wird randlos maximiert.
     private void HandleFramelessChecked()
     {
         DisplayServer.WindowSetSize(DisplayServer.ScreenGetSize());
@@ -136,13 +148,16 @@ public partial class Settings : Node
 
     }
 
+    // Zurück auf Title Menu
     private void HandleZurueckPressed()
     {
         GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/ui/start_screen.tscn");
     }
 
+    // Einstellung für Window Mode wird gesetzt und gespeichert.
     private void saveFile(string mode)
     {
         config.SetValue("Settings", "window_mode", mode);
+        config.Save("user://settings.cfg");
     }
 }
