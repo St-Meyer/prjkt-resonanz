@@ -22,19 +22,26 @@ public partial class StartScreen : Control
 		_btnOptions.Pressed += HandleOptionsPressed;
 		_btnExitGame.Pressed += HandleExitPressed;
 
+		// Load Game Button ausgegraut, wenn kein Savefile vorhanden ist
 		_btnLoadGame.Disabled = !saveManager.HasSave(1);
 	}
 
+	// Spiel wird beendet
 	private void HandleExitPressed()
 	{
 		GetTree().Quit();
 	}
 
+	// Wechsel zu Spieleinstellung-Szene
 	private void HandleOptionsPressed()
 	{
 		GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/ui/Options.tscn");
 	}
 
+	// Aktiver Save wird geladen aus Save 1
+	// Wenn Save vorhanden, wechsel auf Test-Level Szene
+	// TODO: Auswahl aus 3 Savefiles
+	// TODO: Szenenwechsel auf Level mit aktuellen Speicherpunkt
 	private void HandleLoadGamePressed()
 	{
 		var saveManager = GetNode<SaveManager>("/root/SaveManager");
@@ -45,6 +52,8 @@ public partial class StartScreen : Control
 		}
 	}
 
+	// Neues Spiel wird angefangen mit Wechsel auf Test-Level
+	// TODO: Laden auf erstes echtes Level
 	private void HandleNewGamePressed()
 	{
 		GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/world/test_level.tscn");
