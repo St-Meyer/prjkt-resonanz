@@ -8,6 +8,7 @@ public partial class GameOver : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// Spielpause wird aufgehoben
 		GetTree().Paused = false;
 
 		_loadButton = GetNode<Button>("VBoxContainer/HBoxContainer/Load");
@@ -17,6 +18,9 @@ public partial class GameOver : Control
 		_mainMenuButton.Pressed += HandleMainMenuButtonPressed;
 	}
 
+
+	// Wenn aktiver Save besteht wird auf Test Level gewechselt
+	// TODO: Auswahl aus mehreren SaveFiles
 	public void HandleLoadButtonPressed()
 	{
 		var saveManager = GetNode<SaveManager>("/root/SaveManager"); 
@@ -27,6 +31,7 @@ public partial class GameOver : Control
 		}
 	}
 
+	// Wechsel auf Title Menu
 	public void HandleMainMenuButtonPressed()
 	{
 		GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/ui/start_screen.tscn");

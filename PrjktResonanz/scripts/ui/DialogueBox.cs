@@ -17,13 +17,14 @@ public partial class DialogueBox : Control
 		_name = GetNode<Label>("Name");
 		_dialog = GetNode<Label>("Dialogtext");
 
+		// Textbox wird beim ersten Laden unsichtbar geschaltet
 		_textBox.Visible = false;
-		//_textBox.Texture = (Texture2D)GD.Load("res://PrkjtResonanz/assets/ui/textbox.png");
 		_dm = GetNode<DialogueManager>("/root/DialogueManager");
 		_dm.RegisterDialogueBox(this);
 		ProcessMode = ProcessModeEnum.Always;
 	}
 
+	// Dialogbox mit Parametern wird geladen und gezeigt.
 	public void ShowDialogue(string charaterName, string text, Texture2D portrait)
 	{		
 		_textBox.Visible = true;
@@ -32,6 +33,8 @@ public partial class DialogueBox : Control
 		_portrait.Texture = portrait;
 	}
 
+	// Dialogbox, Portrait werden unsichtbar geschaltet
+	// Dialog und Name werden geleert
 	public void HideDialogue()
 	{
 		_textBox.Visible = false;
@@ -42,6 +45,7 @@ public partial class DialogueBox : Control
 
 	public override void _PhysicsProcess(double delta)
 	{
+		// Nächste Textline wird gezeigt
 		if (Input.IsActionJustPressed("ui_accept"))
 		{
 			_dm.ShowNextLine();
