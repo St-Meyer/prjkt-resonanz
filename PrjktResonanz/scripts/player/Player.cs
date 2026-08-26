@@ -44,11 +44,13 @@ public partial class Player : CharacterBody2D, IDamageable, ITargetable{
 		HealthComponent.Died += OnDied;
 	}
 	
+	// Methode, wenn Schaden genommen wird
 	public void TakeDamage(int damage, bool crit)
 	{
 		HealthComponent.TakeDamage(damage, crit);
 	}
 
+	//  Methode, wenn Schaden ausgeteilt wird
 	public void OnAttackExecuted(int damage, bool crit)
 	{
 		_currentTarget.TakeDamage(damage, crit);

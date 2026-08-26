@@ -35,8 +35,9 @@ public partial class SaveManager : Node
         {
             save = JsonSerializer.Deserialize<SaveData>(json.GetAsText());
         }
-
+        json.Close();
         return save;
+        
     }
 
     public bool HasSave(int slotId)
