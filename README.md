@@ -25,7 +25,7 @@ But there's a rule Lyra learns to late and with an high payment.
 | Music | FL Studio |
 | Version Control | Git / GitHub |
 
-> AI is used for research and project planing.
+> AI is used for research and project planning.
 
 ## Status
 
