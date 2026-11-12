@@ -100,3 +100,6 @@
 	welcher verschwindet, wenn man den Savepont verlässt.
 	Gegner jagt Spieler nicht mehr, wenn er in Attackrange ist, um einklemmen
 	zu vermeiden.
+2026-11-26:
+	Bugfix, dass erst die Buttonfunktionen in den Optionen aboniert werden
+	und danach eine Settings-Config File gesucht wird.
