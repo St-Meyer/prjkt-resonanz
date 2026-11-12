@@ -86,7 +86,6 @@ public partial class Settings : Node
 		_pcGrafik.Visible = true;
 		_pcSound.Visible = false;
 		_pcControl.Visible = false;
-		GD.Print("Grafik pressesd");
 	}
 
 	// Control Panel für Soundeinstellungen wird angezeigt
@@ -95,8 +94,6 @@ public partial class Settings : Node
 		_pcSound.Visible = true;
 		_pcGrafik.Visible = false;
 		_pcControl.Visible = false;
-		GD.Print("Sound pressesd");
-
 	}
 
 	// Control Panel für Steuerungseinstellungen wird angezeigt
@@ -105,8 +102,6 @@ public partial class Settings : Node
 		_pcControl.Visible = true;
 		_pcSound.Visible = false;
 		_pcGrafik.Visible = false;
-		GD.Print("Control pressesd");
-
 	}
 
 	// Alle Control Panels werden ausgeblendet
@@ -115,7 +110,6 @@ public partial class Settings : Node
 		_pcGrafik.Visible = false;
 		_pcSound.Visible = false;
 		_pcControl.Visible = false;
-		GD.Print("Back pressesd");
 
 	}
 	// Fenster wird auf Fullscreen gestellt, Randlos und saveFile Methode wird aufgerufen mit
@@ -160,8 +154,6 @@ public partial class Settings : Node
 	private void HandleZurueckPressed()
 	{
 		GetTree().ChangeSceneToFile("res://PrjktResonanz/scenes/ui/start_screen.tscn");
-		GD.Print("Zurueck pressesd");
-
 	}
 
 	// Einstellung für Window Mode wird gesetzt und gespeichert.
