@@ -103,3 +103,7 @@
 2026-11-12:
 	Bugfix, dass erst die Buttonfunktionen in den Optionen aboniert werden
 	und danach eine Settings-Config File gesucht wird.
+2026-11-23:
+	Lichtwurf des Mondes gefixed.
+	CanvasModule, um Dunkelheit der Nacht zu simulieren.
+	Score Soundtrack in Test_Level hinzugefügt.

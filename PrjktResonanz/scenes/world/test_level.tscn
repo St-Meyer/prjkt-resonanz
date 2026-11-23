@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bk86movvsnjt1" path="res://PrjktResonanz/scenes/ui/DialogueBox.tscn" id="7_7nb08"]
 [ext_resource type="PackedScene" uid="uid://dsol41c1b6ftp" path="res://PrjktResonanz/scenes/world/savepoint.tscn" id="8_pebtb"]
 [ext_resource type="Script" uid="uid://dposrjp7yhvs6" path="res://PrjktResonanz/scripts/world/Savepoint.cs" id="9_nno3a"]
+[ext_resource type="AudioStream" uid="uid://chib3raygwd2o" path="res://PrjktResonanz/assets/audio/music/PRJKT Resonanz OST - Rainy Streets and Neon Lights.mp3" id="11_igw08"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q2kx0"]
 
@@ -1129,18 +1130,22 @@ fill_from = Vector2(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_igw08"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.9965035, 1)
-colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.64041096, 0.9828767)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_s4pu3"]
 gradient = SubResource("Gradient_igw08")
 use_hdr = true
 fill = 1
-fill_from = Vector2(0.52136755, 0.51282054)
+fill_from = Vector2(0.53418803, 0.4871795)
 fill_to = Vector2(1, 1)
 
 [node name="TestLevel" type="Node2D" unique_id=490565684]
 script = ExtResource("1_g8wtx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=928430470]
+stream = ExtResource("11_igw08")
+autoplay = true
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=423477111]
 scroll_scale = Vector2(0.1, 0.1)
@@ -1152,6 +1157,9 @@ offset_top = -456.0
 offset_right = 3292.0
 offset_bottom = 1638.0
 texture = ExtResource("1_qgrfh")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1724004186]
+color = Color(0.13682574, 0.13682574, 0.13682568, 1)
 
 [node name="Lyra" parent="." unique_id=1363985345 instance=ExtResource("1_7qb4f")]
 position = Vector2(565, 894)
@@ -1166,6 +1174,8 @@ tile_map_data = PackedByteArray("AAAUADkAAAATAAIAAAAVADkAAAATAAIAAAAWADkAAAATAAI
 tile_set = SubResource("TileSet_7nb08")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="TileMapLayer" unique_id=1258720511]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 skew = 0.008726646
 occluder = SubResource("OccluderPolygon2D_4tlux")
 
@@ -1239,7 +1249,6 @@ texture = SubResource("GradientTexture2D_4xr3m")
 position = Vector2(1907, 267)
 scale = Vector2(78.90624, 52.156246)
 energy = 1.58
-blend_mode = 1
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 2.8
